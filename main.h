@@ -40,5 +40,7 @@ void print_paths(char **pathArr);
 char *check_paths(char **pathArr, char *command);
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
+/* defined in built_in.c*/
+void runBuiltIn(void);
 
 #endif
