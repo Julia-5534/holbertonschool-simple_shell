@@ -47,7 +47,7 @@ void print_paths(char **pathArr)
 
 	for (; pathArr[i]; i++)
 	{
-		printf("path %d is %s\n", i, pathArr[i]);
+		/* placeholder */
 	}
 }
 
