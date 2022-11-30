@@ -33,17 +33,6 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		command = get_input(line);
 		thePath = check_paths(pathArr, command[0]);
-		if (_strcmp("exit", command[0]) == 0)
-		{
-			break;
-		}
-		if (_strcmp("env", command[0]) == 0)
-		{
-			for (i = 0; envp[i]; i++)
-			{
-				/* placeholder */
-			}
-		}
 		if (!(thePath))
 		{
 			errorHand(101, command[0], pName);
