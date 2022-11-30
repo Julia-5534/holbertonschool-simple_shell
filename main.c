@@ -15,6 +15,7 @@ int main(int argc, char *argv[], char *envp[])
 	char *line = NULL, *moneySign, *thePath = NULL;
 	char **command, **pathArr;
 	size_t n = 0;
+	char *pName = argv[0];
 
 	moneySign = "$ ";
 	pathArr = path_locate(envp);
@@ -40,12 +41,12 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			for (i = 0; envp[i]; i++)
 			{
-				printf("%s\n", envp[i]);
+				/* placeholder */
 			}
 		}
 		if (!(thePath))
 		{
-			printf("./hsh: %s not found\n", command[0]);
+			errorHand(101, command[0], pName);
 			continue;
 		}
 		child_pid = fork();

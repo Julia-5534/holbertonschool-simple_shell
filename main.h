@@ -38,5 +38,7 @@ char **path_locate(char *envvars[]);
 char **path_tok(char *path);
 void print_paths(char **pathArr);
 char *check_paths(char **pathArr, char *command);
+/* defined in error_elephant.c */
+void errorHand(int eNum, char *arg, char *pName);
 
 #endif
