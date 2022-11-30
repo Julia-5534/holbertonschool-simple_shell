@@ -12,10 +12,9 @@ int main(int argc, char *argv[], char *envp[])
 	pid_t child_pid;
 	int stat1, i = 0;
 	ssize_t eRet = 0;
-	char *line = NULL, *moneySign;
-	char **command;
+	char *line = NULL, *moneySign, *thePath = NULL;
+	char **command, **pathArr;
 	size_t n = 0;
-	char *thePath = NULL, **pathArr;
 
 	moneySign = "$ ";
 	pathArr = path_locate(envp);
