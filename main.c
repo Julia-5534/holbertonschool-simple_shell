@@ -29,13 +29,9 @@ int main(int argc, char *argv[], char *envp[])
         eRet = getline(&line, &n, stdin);
         if (eRet == -1)
         {
-            free_tokens(command);
-            free(command);
-            free(thePath);
             break;
         }
         command = get_input(line);
-        free(line);
         thePath = check_paths(pathArr, command[0]);
         if (_strcmp("exit", command[0]) == 0)
         {
@@ -62,10 +58,11 @@ int main(int argc, char *argv[], char *envp[])
         {
             waitpid(child_pid, &stat1, WUNTRACED);
         }
-        free_tokens(command);
-        free(command);
-        free(thePath);
+
 	}
+    free_tokens(command);
+    free(thePath);
+    free(command);
     free_path(pathArr);
     write(STDOUT_FILENO, "\n", 1);
     return (0);
