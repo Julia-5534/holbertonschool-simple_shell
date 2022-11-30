@@ -28,9 +28,7 @@ int main(int argc, char *argv[], char *envp[])
 		write(STDOUT_FILENO, moneySign, 2);
 		eRet = getline(&line, &n, stdin);
 		if (eRet == -1)
-		{
 			break;
-		}
 		command = get_input(line);
 		thePath = check_paths(pathArr, command[0]);
 		if (!(thePath))
@@ -40,13 +38,9 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		child_pid = fork();
 		if (child_pid == 0)
-		{
 			execve(thePath, command, envp);
-		}
 		else
-		{
 			waitpid(child_pid, &stat1, WUNTRACED);
-		}
 	}
 	free_tokens(command);
 	free(thePath);
