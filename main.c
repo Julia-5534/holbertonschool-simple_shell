@@ -28,8 +28,14 @@ int main(int argc, char *argv[], char *envp[])
 		write(STDOUT_FILENO, moneySign, 2);
 		eRet = getline(&line, &n, stdin);
 		if (eRet == -1)
+		{
+			free(thePath);
+			free_tokens(command);
+			free(command);
 			break;
+		}
 		command = get_input(line);
+		free(line);
 		thePath = check_paths(pathArr, command[0]);
 		if (!(thePath))
 		{
@@ -41,11 +47,10 @@ int main(int argc, char *argv[], char *envp[])
 			execve(thePath, command, envp);
 		else
 			waitpid(child_pid, &stat1, WUNTRACED);
+		free(thePath);
+		free_tokens(command);
+		free(command);
 	}
-	free(line);
-	free_tokens(command);
-	free(thePath);
-	free(command);
 	free_path(pathArr);
 	write(STDOUT_FILENO, "\n", 1);
 	return (0);

@@ -24,5 +24,6 @@ void errorHand(int eNum, char *arg, char *pName)
 		_strcpy(errComposite, pName);
 		_strcat(errComposite, errMsg1);
 		write(STDERR_FILENO, errComposite, eLen);
+		free(errComposite);
 	}
 }
