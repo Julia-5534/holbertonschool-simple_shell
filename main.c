@@ -30,8 +30,6 @@ int main(int argc, char *argv[], char *envp[])
 		if (eRet == -1)
 		{
 			free(thePath);
-			free_tokens(command);
-			free(command);
 			break;
 		}
 		command = get_input(line);
