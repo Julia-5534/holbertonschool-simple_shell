@@ -43,7 +43,7 @@ int substrLen(char *str, char *delims)
 /**
  * tokstr - tokenizes str into substrs
  * @line: str to tokenize
- * @delim: delim to tokenize based on
+ * @delims: delim to tokenize based on
  * Return: token array
  */
 char **tokstr(char *line, char *delims)

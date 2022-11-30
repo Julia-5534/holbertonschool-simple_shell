@@ -7,9 +7,9 @@
  */
 char **get_input(char *input)
 {
-    char **command;
-    char *separator = " ";
+	char **command;
+	char *separator = " ";
 
-    command = tokstr(input, separator);
-    return (command);
+	command = tokstr(input, separator);
+	return (command);
 }

@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * errorHand - handles errors
+ * @eNum: error number
+ * @arg: error arg
+ * @pName: program name
+ * Return: void, prints error to SE
+ */
 void errorHand(int eNum, char *arg, char *pName)
 {
 	unsigned int eLen = 0;
