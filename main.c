@@ -42,6 +42,7 @@ int main(int argc, char *argv[], char *envp[])
 		else
 			waitpid(child_pid, &stat1, WUNTRACED);
 	}
+	free(line);
 	free_tokens(command);
 	free(thePath);
 	free(command);
