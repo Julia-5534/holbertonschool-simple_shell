@@ -29,7 +29,6 @@ int main(int argc, char *argv[], char *envp[])
 		eRet = getline(&line, &n, stdin);
 		if (eRet == -1)
 		{
-			free(thePath);
 			break;
 		}
 		command = get_input(line);
@@ -38,6 +37,8 @@ int main(int argc, char *argv[], char *envp[])
 		if (!(thePath))
 		{
 			errorHand(101, command[0], pName);
+			free_tokens(command);
+			free(command);
 			continue;
 		}
 		child_pid = fork();
