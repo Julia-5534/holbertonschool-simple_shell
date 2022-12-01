@@ -22,9 +22,9 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		/* placeholder */
 	}
+	write(STDOUT_FILENO, moneySign, 2);
 	while (1)
 	{
-		write(STDOUT_FILENO, moneySign, 2);
 		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
 		{
@@ -50,6 +50,5 @@ int main(int argc, char *argv[], char *envp[])
 		free(command);
 	}
 	free_path(pathArr);
-	write(STDOUT_FILENO, "\n", 1);
 	return (0);
 }
