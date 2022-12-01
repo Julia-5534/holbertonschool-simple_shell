@@ -14,7 +14,6 @@ int main(int argc, char *argv[], char *envp[])
 	ssize_t eRet = 0;
 	char *line = NULL, *moneySign, *thePath = NULL;
 	char **command, **pathArr;
-	size_t n = 0;
 	char *pName = argv[0];
 
 	moneySign = "$ ";
@@ -26,7 +25,7 @@ int main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		write(STDOUT_FILENO, moneySign, 2);
-		eRet = getline(&line, &n, stdin);
+		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
 		{
 			break;

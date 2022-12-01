@@ -13,3 +13,44 @@ char **get_input(char *input)
 	command = tokstr(input, separator);
 	return (command);
 }
+
+ssize_t yoinkline(char **line, FILE *inbound)
+{
+	static ssize_t inCount;
+	char *buff;
+	char c = 'a';
+	int readRet;
+
+	if (inCount == 0)
+	{
+		fflush(inbound);
+	}
+	else
+	{
+		return (-1);
+	}
+	inCount = 0;
+	buff = malloc(sizeof(char) * 151);
+	while (c != '\n')
+	{
+		readRet = read(STDIN_FILENO, &c, 1);
+		if (readRet == -1)
+		{
+			free(buff);
+			return (-1);
+		}
+		else if (readRet == 0 && inCount > 0)
+		{
+			break;
+		}
+		buff[inCount] = c;
+		inCount++;
+	}
+	buff[inCount] = '\0';
+	*line = buff;
+	if (readRet != 0)
+	{
+		inCount = 0;
+	}
+	return (inCount);
+}

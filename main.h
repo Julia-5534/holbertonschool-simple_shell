@@ -31,6 +31,7 @@ void free_tokens(char **tokens);
 void free_path(char **paths);
 /* defined in help_fun.c */
 char **get_input(char *input);
+ssize_t yoinkline(char **line, FILE *inbound);
 /* defined in moar_strstuff.c */
 int _strncmp(char *s1, char *s2, int n);
 /* defined in pathfinder.c */
