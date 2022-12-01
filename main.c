@@ -18,11 +18,10 @@ int main(int argc, char *argv[], char *envp[])
 
 	moneySign = "$ ";
 	pathArr = path_locate(envp);
-	if (argc || argv[0] || thePath)
+	if (argc || argv[0] || moneySign)
 	{
 		/* placeholder */
 	}
-	write(STDOUT_FILENO, moneySign, 2);
 	while (1)
 	{
 		eRet = yoinkline(&line, stdin);
