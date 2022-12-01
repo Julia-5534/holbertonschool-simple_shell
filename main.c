@@ -24,6 +24,8 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, moneySign, 2);
 		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
 		{
@@ -48,6 +50,8 @@ int main(int argc, char *argv[], char *envp[])
 		free_tokens(command);
 		free(command);
 	}
+	if (isatty(STDIN_FILENO))
+	write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
 	return (0);
 }
