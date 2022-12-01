@@ -34,7 +34,7 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	while (c != '\n')
 	{
 		readRet = read(STDIN_FILENO, &c, 1);
-		if (readRet == -1)
+		if (readRet == EOF || (readRet == 0 && inCount == 0))
 		{
 			free(buff);
 			return (-1);
@@ -46,7 +46,8 @@ ssize_t yoinkline(char **line, FILE *inbound)
 		buff[inCount] = c;
 		inCount++;
 	}
-	buff[inCount - 1] = '\0';
+	if (inCount > 1)
+		buff[inCount - 1] = '\0';
 	*line = buff;
 	if (readRet != 0)
 	{
