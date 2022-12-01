@@ -70,7 +70,6 @@ char *check_paths(char **pathArr, char *command)
 		_strcpy(cmpPath, pathArr[i]);
 		_strcat(cmpPath, "/");
 		_strcat(cmpPath, command);
-		printf("%s\n", cmpPath);
 		if (stat(cmpPath, &s) == 0)
 		{
 			return (cmpPath);
