@@ -12,6 +12,19 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+/**
+ * struct builtIn_s - struct used to call builtIn funs
+ * @fun: function name string
+ * @f: void function pointer
+ *
+ * Description: calls builtIn funs
+ */
+typedef struct builtIn_s
+{
+	char *fun;
+	void (*f)(char **envp);
+} builtIn_t;
+
 /*
  * prototypes - function protos below
  */
@@ -42,6 +55,6 @@ char *check_paths(char **pathArr, char *command);
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
 /* defined in built_in.c*/
-void runBuiltIn(void);
+void runBuiltIn(char *envp[], char *command);
 
 #endif
