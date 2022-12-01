@@ -76,5 +76,7 @@ char *check_paths(char **pathArr, char *command)
 		}
 		free(cmpPath);
 	}
+	if (stat(command, &s) == 0)
+		return (command);
 	return (NULL);
 }
