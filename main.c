@@ -51,7 +51,7 @@ int main(int argc, char *argv[], char *envp[])
 		free(command);
 	}
 	if (isatty(STDIN_FILENO))
-	write(STDOUT_FILENO, "\n", 1);
+		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
 	return (0);
 }
