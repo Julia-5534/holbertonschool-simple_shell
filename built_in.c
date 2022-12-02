@@ -13,7 +13,7 @@ void bIn_env(char **envp, char **command, char **pathArr)
 {
 	unsigned int i = 0;
 
-	if (pathArrr)
+	if (pathArr)
 	/*placeholder*/
 	for (; envp[i]; i++)
 	{
