@@ -1,16 +1,20 @@
 #include "main.h"
 
-void bIn_exit(char **envp)
+void bIn_exit(char **envp, char **command, char **pathArr)
 {
 	if (envp)
-		/* YOLO */
+		/*place holder*/
+	free_tokens(command);
+	free_path(pathArr);
 	exit(EXIT_SUCCESS);
 }
 
-void bIn_env(char **envp)
+void bIn_env(char **envp, char **command, char **pathArr)
 {
 	unsigned int i = 0;
 
+	if (command || pathArr)
+		/*placeholder*/
 	for (; envp[i]; i++)
 	{
 		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
@@ -22,12 +26,18 @@ void bIn_env(char **envp)
  * @envp: environ vars
  * Return: void
  */
-void runBuiltIn(char *envp[], char *command)
+int runBuiltIn(char *envp[], char **command, char **pathArr)
 {
 	builtIn_t betty[] = {{"exit", bIn_exit}, {"env", bIn_env}, {NULL, NULL}};
 	unsigned int i = 0;
 
 	for (; betty[i].fun; i++)
+	{	
 		if (_strcmp(betty[i].fun, command) == 0)
-			betty[i].f(envp);
+		{
+			betty[i].f(envp, command, pathArr);
+			return (i);
+		}
+	}	
+	return (-1);
 }
