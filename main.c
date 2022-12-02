@@ -10,7 +10,7 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	pid_t child_pid;
-	int stat1;
+	int stat1; retVal;
 	ssize_t eRet = 0;
 	char *line = NULL, *moneySign, *thePath = NULL;
 	char **command, **pathArr;
@@ -38,6 +38,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (!(thePath))
 		{
 			errorHand(101, command[0], pName);
+			free_tokens(command);
 			continue;
 		}
 		child_pid = fork();
@@ -47,6 +48,7 @@ int main(int argc, char *argv[], char *envp[])
 			waitpid(child_pid, &stat1, WUNTRACED);
 		if (_strcmp(thePath, command[0]) != 0)
 			free(thePath);
+		free_tokens(command);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
