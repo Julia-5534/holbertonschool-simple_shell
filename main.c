@@ -38,8 +38,6 @@ int main(int argc, char *argv[], char *envp[])
 		if (!(thePath))
 		{
 			errorHand(101, command[0], pName);
-			free_tokens(command);
-			free(command);
 			continue;
 		}
 		child_pid = fork();
@@ -49,8 +47,6 @@ int main(int argc, char *argv[], char *envp[])
 			waitpid(child_pid, &stat1, WUNTRACED);
 		if (_strcmp(thePath, command[0]) != 0)
 			free(thePath);
-		free_tokens(command);
-		free(command);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
