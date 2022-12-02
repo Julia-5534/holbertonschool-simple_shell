@@ -13,13 +13,14 @@ void bIn_env(char **envp, char **command, char **pathArr)
 {
 	unsigned int i = 0;
 
-	if (command || pathArr)
-		/*placeholder*/
+	if (pathArrr)
+	/*placeholder*/
 	for (; envp[i]; i++)
 	{
 		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
-		write (STDOUT_FILENO, "/n", 1);
+		write(STDOUT_FILENO, "/n", 1);
 	}
+	free_tokens(command);
 }
 
 /**
