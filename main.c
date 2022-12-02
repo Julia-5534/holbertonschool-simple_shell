@@ -33,7 +33,11 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		command = get_input(line);
 		free(line);
-		runBuiltIn(envp, command[0]);
+		retVal = runBuiltIn(envp, command, pathArr);
+		if (retVal >= 0)
+		{
+			continue;
+		}
 		thePath = check_paths(pathArr, command[0]);
 		if (!(thePath))
 		{
