@@ -54,8 +54,8 @@ char *check_paths(char **pathArr, char *command);
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
 /* defined in built_in.c*/
-void bIn_exit(char **command, char **pathArr);
-void bIn_env(char **envp);
-void runBuiltIn(char *envp[], char **command, char **pathArr);
+void bIn_exit(char **envp, char **command, char **pathArr);
+void bIn_env(char **envp, char **command, char **pathArr);
+int runBuiltIn(char *envp[], char **command, char **pathArr);
 
 #endif

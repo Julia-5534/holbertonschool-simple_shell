@@ -18,6 +18,7 @@ void bIn_env(char **envp, char **command, char **pathArr)
 	for (; envp[i]; i++)
 	{
 		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
+		write (STDOUT_FILENO, "/n", 1);
 	}
 }
 
@@ -33,7 +34,7 @@ int runBuiltIn(char *envp[], char **command, char **pathArr)
 
 	for (; betty[i].fun; i++)
 	{	
-		if (_strcmp(betty[i].fun, command) == 0)
+		if (_strcmp(betty[i].fun, command[0]) == 0)
 		{
 			betty[i].f(envp, command, pathArr);
 			return (i);

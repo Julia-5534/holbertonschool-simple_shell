@@ -10,7 +10,7 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	pid_t child_pid;
-	int stat1; retVal;
+	int stat1, retVal;
 	ssize_t eRet = 0;
 	char *line = NULL, *moneySign, *thePath = NULL;
 	char **command, **pathArr;
