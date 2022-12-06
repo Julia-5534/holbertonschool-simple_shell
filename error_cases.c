@@ -102,7 +102,7 @@ char *error_1(char **argArr)
 }
 
 /**
- * error_2_exit - Creates error message for exit errors.
+ * error_exit - Creates error message for exit errors.
  * @argArr: An array of arguments passed to the command.
  * Return: The error string.
  */

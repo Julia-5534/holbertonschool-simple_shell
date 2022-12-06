@@ -139,7 +139,7 @@ int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **front)
  * Return: If the environmental variable does not exist - NULL.
  *         Otherwise - a pointer to the environmental variable.
  */
-char **_getenv( char *var)
+char **_getenv(char *var)
 {
 	int index, len;
 

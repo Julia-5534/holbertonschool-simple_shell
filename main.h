@@ -29,7 +29,7 @@ typedef struct builtIn_s
 {
 	char *fun;
 	void (*f)(char **envp, char **command, char **pathArr);
-}builtIn_t;
+} builtIn_t;
 
 /**
  * struct alias_s - struct defining aliases.
@@ -84,11 +84,13 @@ int _strncmp(char *s1, char *s2, int n);
 /* defined in pathfinder.c */
 char **path_locate(char *envvars[]);
 char **path_tok(char *path);
-void print_paths(char **pathArr); /* I adjusted this */
+void print_paths(char **pathArr);
+/* ^^ I adjusted that one */
 char *check_paths(char **pathArr, char *command);
 
 /* defined in error_elephant.c */
-void errorHand(int eNum, char *arg, char *pName); /*Do we still need this?*/
+void errorHand(int eNum, char *arg, char *pName);
+/* Do we still need this? */
 
 /* defined in error_cases.c */
 int create_error(char **argArr, int err);
@@ -109,7 +111,7 @@ char *enviro(char *envar);
 int hey_env(char **argArr, char __attribute__((__unused__)) **front);
 int hey_setenv(char **argArr, char __attribute__((__unused__)) **front);
 int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **front);
-char **_getenv( char *var);
+char **_getenv(char *var);
 
 /* defined in built_in.c */
 int (*runBuiltIn(char *command))(char **argArr, char **front);

@@ -2,7 +2,7 @@
 
 char **path_locate(char *envvars[]);
 char **path_tok(char *path);
-void print_paths(char **pathArr); /* I adjusted this */
+void print_paths(char **pathArr);
 char *check_paths(char **pathArr, char *command);
 
 /**
@@ -44,6 +44,7 @@ char **path_tok(char *path)
 /**
  * print_paths - shows the tokenized paths
  * @pathArr: array of path strs
+ * Return: the goods
  * LET ME KNOW IF THIS IS ALL JACKED UP
  */
 void print_paths(char **pathArr)

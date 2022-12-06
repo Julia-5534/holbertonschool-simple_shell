@@ -19,7 +19,7 @@ void free_tokens(char **tokens)
 	{
 		free(tokens[i]);
 	}
-	free (tokens);
+	free(tokens);
 }
 
 /**
@@ -52,7 +52,7 @@ void free_env(void)
 }
 
 /**
- * free_args - Frees up memory taken by args.
+ * free_argArr - Frees up memory taken by args.
  * @argArr: A null-terminated double pointer containing commands/arguments.
  * @front: A double pointer to the beginning of args.
  */

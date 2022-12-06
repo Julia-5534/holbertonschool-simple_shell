@@ -1,5 +1,7 @@
 #include "main.h"
 
+void errorHand(int eNum, char *arg, char *pName);
+
 /**
  * errorHand - handles errors
  * @eNum: error number

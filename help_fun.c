@@ -19,6 +19,12 @@ char **get_input(char *input)
 	return (command);
 }
 
+/**
+ * yoinkline - our version of getline
+ * @line: the line to be yoinked
+ * @inbound: the inbound file to be yoinked
+ * Return: inbound
+*/
 ssize_t yoinkline(char **line, FILE *inbound)
 {
 	static ssize_t inCount;
