@@ -1,5 +1,7 @@
 #include "main.h"
 
+int _strncmp(char *s1, char *s2, int n);
+
 /**
  * _strncmp - compares strings up to n chars
  * @s1: first string

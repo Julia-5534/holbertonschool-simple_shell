@@ -1,5 +1,9 @@
 #include "main.h"
 
+int tok_num(char *str, char *delims);
+char **tokstr(char *line, char *delims);
+int substrLen(char *str, char *delims);
+
 /**
  * tok_num - calcs num of toks in str
  * @str: string to tokenize

@@ -1,5 +1,7 @@
 #include "main.h"
 
+char *enviro(char *envar);
+
 /**
  * enviro - Function to return the environment global
  * @envar: global variable

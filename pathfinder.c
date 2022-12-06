@@ -1,5 +1,10 @@
 #include "main.h"
 
+char **path_locate(char *envvars[]);
+char **path_tok(char *path);
+void print_paths(char **pathArr); /* I adjusted this */
+char *check_paths(char **pathArr, char *command);
+
 /**
  * path_locate - yoinks path from env
  * @envvars: env var array in
