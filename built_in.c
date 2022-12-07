@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int (*runBuiltIn(char *command))(char **argArr, char **front);
 int hey_exit(char **argArr, char **front);

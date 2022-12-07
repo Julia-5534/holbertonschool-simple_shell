@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int hey_alias(char **argArr, char __attribute__((__unused__)) **front);
 void set_alias(char *var_name, char *value);

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int tok_num(char *str, char *delims);
 char **tokstr(char *line, char *delims);

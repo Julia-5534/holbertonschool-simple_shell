@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int _strncmp(char *s1, char *s2, int n);
 

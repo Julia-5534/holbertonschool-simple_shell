@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 void free_tokens(char **tokens);
 void free_path(char **paths);

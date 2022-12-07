@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 void errorHand(int eNum, char *arg, char *pName);
 

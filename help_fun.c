@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);

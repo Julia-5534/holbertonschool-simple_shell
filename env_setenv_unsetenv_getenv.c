@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int hey_env(char **args, char __attribute__((__unused__)) **front);
 int hey_setenv(char **args, char __attribute__((__unused__)) **front);

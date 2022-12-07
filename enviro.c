@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 char *enviro(char *envar);
 

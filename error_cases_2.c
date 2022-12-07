@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 char *error_cd(char **argArr);
 char *error_syn(char **argArr);

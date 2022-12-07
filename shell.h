@@ -1,5 +1,5 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef SHELL_H_
+#define SHELL_H_
 
 /*
  * libraries - to be included
