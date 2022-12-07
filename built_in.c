@@ -1,8 +1,8 @@
 #include "shell.h"
 
-int (*runBuiltIn(char *command))(char **argArr, char **front);
+int *runBuiltIn(char**command, char **pathArr, char **envp);
 int hey_exit(char **argArr, char **front);
-int hey_cd(char **argArr, char __attribute__((__unused__)) **front);
+int hey_cd(char **argArr, char **__attribute__((__unused__)) **front);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -10,7 +10,7 @@ int hey_cd(char **argArr, char __attribute__((__unused__)) **front);
  * @command: The command to match.
  * Return: A function pointer to the corresponding builtin.
  */
-int (*runBuiltIn(char *command))(char **argArr, char **front)
+int *runBuiltIn(char **command, char **pathArr, char **envp)
 {
 	builtIn_t funcs[] = {
 		{ "exit", hey_exit },
@@ -25,7 +25,7 @@ int (*runBuiltIn(char *command))(char **argArr, char **front)
 
 	for (i = 0; funcs[i].fun; i++)
 	{
-		if (_strcmp(funcs[i].fun, command) == 0)
+		if (_strcmp(funcs[i].fun, command[0]) (pathArr, envp)== 0)
 			break;
 	}
 	return (funcs[i].f);
@@ -85,7 +85,7 @@ int hey_exit(char **argArr, char **front)
  *         If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hey_cd(char **argArr, char __attribute__((__unused__)) **front)
+int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
 {
 	char **dir_info, *new_line = "\n";
 	char *oldpwd = NULL, *pwd = NULL;
@@ -139,12 +139,12 @@ int hey_cd(char **argArr, char __attribute__((__unused__)) **front)
 
 	dir_info[0] = "OLDPWD";
 	dir_info[1] = oldpwd;
-	if (hey_setenv(dir_info, dir_info) == -1)
+	if (hey_setenv(dir_info, dir_info, dir_info) == -1)
 		return (-1);
 
 	dir_info[0] = "PWD";
 	dir_info[1] = pwd;
-	if (hey_setenv(dir_info, dir_info) == -1)
+	if (hey_setenv(dir_info, dir_info, dir_info) == -1)
 		return (-1);
 	if (argArr[0] && argArr[0][0] == '-' && argArr[0][1] != '-')
 	{

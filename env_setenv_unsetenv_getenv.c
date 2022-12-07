@@ -1,8 +1,8 @@
 #include "shell.h"
 
-int hey_env(char **args, char __attribute__((__unused__)) **front);
-int hey_setenv(char **args, char __attribute__((__unused__)) **front);
-int hey_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int hey_env(char **args, char **__attribute__((__unused__)), char **front);
+int hey_setenv(char **args, char **__attribute__((__unused__)), char **front);
+int hey_unsetenv(char **args, char **__attribute__((__unused__)), char **front);
 char **_getenv(char *var);
 
 /**
@@ -15,7 +15,7 @@ char **_getenv(char *var);
  * Description: Prints one variable per line in the
  *              format 'variable'='value'.
  */
-int hey_env(char **argArr, char __attribute__((__unused__)) **front)
+int hey_env(char **argArr, char **__attribute__((__unused__)), char **front)
 {
 	int index;
 	char nc = '\n';
@@ -43,7 +43,7 @@ int hey_env(char **argArr, char __attribute__((__unused__)) **front)
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hey_setenv(char **argArr, char __attribute__((__unused__)) **front)
+int hey_setenv(char **argArr, char **__attribute__((__unused__)), char **front)
 {
 	char **env_var = NULL, **new_environ, *new_value;
 	size_t size;
@@ -96,7 +96,7 @@ int hey_setenv(char **argArr, char __attribute__((__unused__)) **front)
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **front)
+int hey_unsetenv(char **argArr, char **__attribute__((__unused__)), char **front)
 {
 	char **env_var, **new_environ;
 	size_t size;

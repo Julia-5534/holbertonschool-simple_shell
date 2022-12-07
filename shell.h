@@ -60,6 +60,9 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 
+/* defined in string_support_2.c */
+unsigned int _strspn(char *s, char *accept);
+
 /* defined in tokenizer.c */
 int tok_num(char *str, char *delims);
 char **tokstr(char *line, char *delims);
@@ -108,18 +111,18 @@ char *error_127(char **argArr);
 char *enviro(char *envar);
 
 /* defined in env_setenv_unsetenv_getenv.c */
-int hey_env(char **argArr, char __attribute__((__unused__)) **front);
-int hey_setenv(char **argArr, char __attribute__((__unused__)) **front);
-int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **front);
+int hey_env(char **argArr, char **__attribute__((__unused__)), char **front);
+int hey_setenv(char **argArr, char **__attribute__((__unused__)), char **front);
+int hey_unsetenv(char **argArr, char **__attribute__((__unused__)), char **front);
 char **_getenv(char *var);
 
 /* defined in built_in.c */
-int (*runBuiltIn(char *command))(char **argArr, char **front);
+int *runBuiltIn(char **command, char **pathArr, char **envp);
 int hey_exit(char **argArr, char **front);
-int hey_cd(char **argArr, char __attribute__((__unused__)) **front);
+int hey_cd(char **argArr, char **__attribute__((__unused__)), char **front);
 
 /* defined in alias_builtins.c */
-int hey_alias(char **argArr, char __attribute__((__unused__)) **front);
+int hey_alias(char **argArr, char __attribute__((__unused__)), char **front);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 

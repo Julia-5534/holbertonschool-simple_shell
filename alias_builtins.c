@@ -30,7 +30,7 @@ int hey_alias(char **argArr, char __attribute__((__unused__)) **front)
 	for (i = 0; argArr[i]; i++)
 	{
 		temp = aliases;
-		value = _strchr(argArr[i], '=');
+		value = tokstr(argArr[i], '=');
 		if (!value)
 		{
 			while (temp)
