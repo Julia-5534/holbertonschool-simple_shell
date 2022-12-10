@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
 		}
 		if (eRet == -1)
 		{
-			fRet = -1;
 			continue;
 		}
 		command = get_input(line);
@@ -42,7 +41,6 @@ int main(int argc, char *argv[])
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
-			fRet = 0;
 			free_tokens(command);
 			continue;
 		}
