@@ -10,14 +10,14 @@ char *check_paths(char *command);
  * @envvars: env var array in
  * Return: array of path strs
  */
-char **path_locate(char *envvars)
+char **path_locate(char *envvar)
 {
 	unsigned int i = 0;
 	char **daWay = NULL;
 
 	for (; environ[i]; i++)
 	{
-		if (_strncmp(envvars, environ[i], 4) == 0)
+		if (_strncmp(envvar, environ[i], _strlen(envvar)) == 0)
 		{
 			daWay = path_tok(environ[i]);
 			return (daWay);
