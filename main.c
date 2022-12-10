@@ -30,6 +30,8 @@ int main(int argc, char *argv[], char *envp[])
 		if (eRet == -1)
 			break;
 		command = get_input(line);
+		if (command[0][0] == '\n')
+			continue;
 		free(line);
 		retVal = runBuiltIn(command, envp);
 		if (retVal >= 0)
