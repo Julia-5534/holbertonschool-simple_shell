@@ -37,11 +37,6 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		command = get_input(line);
 		free(line);
-		if (command[0][0] == '\n')
-		{
-			free_tokens(command);
-			continue;
-		}
 		retVal = runBuiltIn(command, envp);
 		if (retVal >= 0)
 		{

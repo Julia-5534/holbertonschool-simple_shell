@@ -13,18 +13,17 @@ void errorHand(int eNum, char *arg, char *pName)
 {
 	unsigned int eLen = 0;
 	char *errComposite;
-	char *errMsg1 = ": No such file or directory\n";
+	char *errMsg0 = ": 1: ";
+	char *errMsg2 = ": not found\n";
 
-	if (arg)
-	{
-		/* placeholder */
-	}
 	if (eNum == 101)
 	{
-		eLen = (_strlen(pName) + _strlen(errMsg1) + 1);
+		eLen = (_strlen(pName) + _strlen(errMsg2) + _strlen(arg) + strlen(errMsg0) + 1);
 		errComposite = malloc(sizeof(char) * eLen);
 		_strcpy(errComposite, pName);
-		_strcat(errComposite, errMsg1);
+		_strcat(errComposite, errMsg0);
+		_strcat(errComposite, arg);
+		_strcat(errComposite, errMsg2);
 		write(STDERR_FILENO, errComposite, eLen);
 		free(errComposite);
 	}
