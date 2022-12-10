@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 		hist++;
 		if (eRet == -2)
 		{
+			eRet = 0;
 			break;
 		}
 		if (eRet == -1)
