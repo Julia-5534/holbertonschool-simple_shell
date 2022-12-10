@@ -175,13 +175,16 @@ int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
  */
 int hey_env(char **command, char **envp)
 {
-	int i;
+	int i, j;
 
-	if (command)
+	if (command || envp)
 	/* placeholder */
-	for (i = 0; envp[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
+		for (j = 0; environ[i][j]; j++)
+		{
+			write(STDOUT_FILENO, &environ[i][j], 1);
+		}
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	return (0);

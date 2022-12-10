@@ -16,6 +16,9 @@
 #include <fcntl.h>
 #include <errno.h>
 
+/* global */
+int hist;
+extern char **pathArr;
 extern char **environ;
 
 /**
@@ -44,9 +47,6 @@ typedef struct alias_s
 	struct alias_s *next;
 } alias_t;
 
-/* global */
-int hist;
-extern char **pathArr;
 alias_t *aliases;
 
 /*
