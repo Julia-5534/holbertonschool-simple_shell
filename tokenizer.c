@@ -17,7 +17,7 @@ int tok_num(char *str, char *delims)
 	lineLen = _strlen(str);
 	for (i = 0; i < lineLen; i++)
 	{
-		if (str[i] != *delims)
+		if (str[i] && str[i] != delims[0] && str[i] != delims[1])
 		{
 			tokTotal++;
 			i += substrLen(str + i, delims);
@@ -36,7 +36,7 @@ int substrLen(char *str, char *delims)
 {
 	int i = 0, tokLen = 0;
 
-	while (str[i] && str[i] != *delims)
+	while (str[i] && str[i] != delims[0] && str[i] != delims[1])
 	{
 		i++;
 		tokLen++;
@@ -56,10 +56,11 @@ char **tokstr(char *line, char *delims)
 	int i, j = 0, k, tokTotal, ssLen = 0;
 
 	tokTotal = tok_num(line, delims);
+	printf("%d\n", tokTotal);
 	tokenStorage = malloc(sizeof(char *) * (tokTotal + 1));
 	for (i = 0; i < tokTotal; i++)
 	{
-		while (line[j] == *delims)
+		while (line[j] == *delims || line[j] == delims[1])
 			j++;
 		ssLen = substrLen(line + j, delims);
 		tokenStorage[i] = malloc(sizeof(char) * (ssLen + 1));
