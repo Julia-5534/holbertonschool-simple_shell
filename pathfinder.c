@@ -104,10 +104,6 @@ char *check_paths(char *command)
 		{
 			return (command);
 		}
-		else
-		{
-			return (NULL);
-		}
 	}
 	for (; pathArr[i]; i++)
 	{

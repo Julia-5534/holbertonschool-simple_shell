@@ -14,7 +14,7 @@ char **get_input(char *input)
 {
 	int i;
 	char **command;
-	char *separator = " \t";
+	char *separator = " ";
 
 	for (i = 0; separator[i]; i++)
 		command = tokstr(input, &separator[i]);
