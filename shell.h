@@ -101,6 +101,7 @@ char *enviro(char *envar);
 /* defined in built_in.c */
 int runBuiltIn(char **command, char **envp);
 int hey_exit(char **command, char **envp);
+int hey_env(char **command, char **envp);
 
 /*
 int hey_cd(char **command, char **pathArr, char **envp);

@@ -2,6 +2,7 @@
 
 int runBuiltIn(char**command, char **envp);
 int hey_exit(char **command, char **envp);
+int hey_env(char **command, char **envp);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -13,16 +14,16 @@ int runBuiltIn(char **command, char **envp)
 {
 	builtIn_t betty[] = {
 		{ "exit", hey_exit },
+		{ "env", hey_env },
 		{ NULL, NULL }
 	};
 	int i;
 	for (i = 0; betty[i].fun; i++)
 	{
-		if (_strcmp(betty[i].fun, command[0]) == 0 && _strlen(command[0]) == 4)
+		if (_strcmp(betty[i].fun, command[0]) == 0 && _strlen(command[0]) == _strlen(betty[i].fun))
 		{
 			betty[i].f(command, envp);
 			return (i);
-			break;
 		}
 	}
 	return (-1);
@@ -161,3 +162,27 @@ int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
 	return (0);
 }
 */
+
+/**
+ * hey_env - Prints the current environment.
+ * @argArr: An array of arguments passed to the shell.
+ * @front: A double pointer to the beginning of argArr.
+ * Return: If an error occurs - -1.
+ *	   Otherwise - 0.
+ *
+ * Description: Prints one variable per line in the
+ *              format 'variable'='value'.
+ */
+int hey_env(char **command, char **envp)
+{
+	int i;
+
+	if (command)
+	/* placeholder */
+	for (i = 0; envp[i + 1]; i++)
+	{
+		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	return (0);
+}
