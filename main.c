@@ -45,15 +45,12 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		thePath = check_paths(command[0]);
-		if (!(thePath))
+		fRet = forktime(command, thePath);
+		if (fRet == 126 || fRet == 127)
 		{
-			fRet = 127;
 			errorHand(hist, command[0], pName);
-			free_tokens(command);
-			continue;
 		}
-		forktime(command, thePath);
-		fRet = 0;
+		free_tokens(command);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
@@ -64,13 +61,21 @@ int main(int argc, char *argv[])
 int forktime(char **command, char *thePath)
 {
 	pid_t child_pid;
-	int stat1;
+	int stat1, eRet = 0;
 
+	if (!thePath)
+		return (127);
 	switch(child_pid = fork())
 	{
 		case 0:
 		{
 			execve(thePath, command, environ);
+			if (errno = EACCES)
+				eRet = 126;
+			_exit(eRet);
+		}
+		case -1:
+		{
 			perror("BAD MAGIC");
 			exit(EXIT_FAILURE);
 		}
@@ -80,5 +85,5 @@ int forktime(char **command, char *thePath)
 	if (_strcmp(thePath, command[0]) != 0)
 		free(thePath);
 	free_tokens(command);
-	return (0);
+	return (eRet);
 }
