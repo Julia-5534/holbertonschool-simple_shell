@@ -28,7 +28,7 @@ extern char **environ;
 typedef struct builtIn_s
 {
 	char *fun;
-	void (*f)(char **envp, char **command, char **pathArr);
+	int (*f)(char **envp, char **command, char **pathArr);
 } builtIn_t;
 
 /**
@@ -83,6 +83,7 @@ char *_itoa(int num);
 
 /* defined in moar_strstuff.c */
 int _strncmp(char *s1, char *s2, int n);
+unsigned int _strspn(char *s, char *accept);
 
 /* defined in pathfinder.c */
 char **path_locate(char *envvars[]);
@@ -93,37 +94,31 @@ char *check_paths(char **pathArr, char *command);
 
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
-/* Do we still need this? */
-
-/* defined in error_cases.c */
-int create_error(char **argArr, int err);
-char *error_env(char **argArr);
-char *error_1(char **argArr);
-char *error_exit(char **argArr);
-
-/* defined in error_cases_2.c */
-char *error_cd(char **argArr);
-char *error_syn(char **argArr);
-char *error_126(char **argArr);
-char *error_127(char **argArr);
 
 /* defined in enviro.c */
 char *enviro(char *envar);
 
-/* defined in env_setenv_unsetenv_getenv.c */
-int hey_env(char **argArr, char **__attribute__((__unused__)), char **front);
-int hey_setenv(char **argArr, char **__attribute__((__unused__)), char **front);
-int hey_unsetenv(char **argArr, char **__attribute__((__unused__)), char **front);
-char **_getenv(char *var);
-
 /* defined in built_in.c */
-int *runBuiltIn(char **command, char **pathArr, char **envp);
-int hey_exit(char **argArr, char **front);
-int hey_cd(char **argArr, char **__attribute__((__unused__)), char **front);
+int runBuiltIn(char **command, char **pathArr, char **envp);
+int hey_exit(char **command, char **pathArr, char **envp);
 
-/* defined in alias_builtins.c */
-int hey_alias(char **argArr, char __attribute__((__unused__)), char **front);
+/*
+int hey_cd(char **command, char **pathArr, char **envp);
+int hey_env(char **command, char **pathArr, char **envp);
+int hey_setenv(char **command, char **pathArr, char **envp);
+int hey_unsetenv(char **command, char **pathArr, char **envp);
+char **_getenv(char *var);
+int hey_alias(char **command, char **pathArr, char **envp);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
+char *error_cd(char **argArr);
+char *error_syn(char **argArr);
+char *error_126(char **argArr);
+char *error_127(char **argArr);
+int create_error(char **argArr, int err);
+char *error_env(char **argArr);
+char *error_1(char **argArr);
+char *error_exit(char **argArr);
+*/
 
 #endif

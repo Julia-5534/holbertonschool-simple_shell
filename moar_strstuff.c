@@ -1,6 +1,7 @@
 #include "shell.h"
 
 int _strncmp(char *s1, char *s2, int n);
+unsigned int _strspn(char *s, char *accept);
 
 /**
  * _strncmp - compares strings up to n chars
@@ -27,4 +28,31 @@ int _strncmp(char *s1, char *s2, int n)
 		}
 	}
 	return (dif);
+}
+
+/**
+ * _strspn - calculates byte overlap
+ * @s: input string
+ * @accept: string w/ bytes to be accepted
+ * Return: num of target byte matches
+ */
+unsigned int _strspn(char *s, char *accept)
+{
+	unsigned int bCount = 0;
+	int i = 0, j = 0;
+
+	while (accept[i])
+	{
+		j = 0;
+		while ((s[j] >= 'a' && s[j] <= 'z') || (s[j] >= 'A' && s[j] <= 'Z'))
+		{
+			if (s[j] == accept[i])
+			{
+				bCount++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (bCount);
 }

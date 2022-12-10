@@ -1,8 +1,7 @@
 #include "shell.h"
 
-int *runBuiltIn(char**command, char **pathArr, char **envp);
-int hey_exit(char **argArr, char **front);
-int hey_cd(char **argArr, char **__attribute__((__unused__)) **front);
+int runBuiltIn(char**command, char **pathArr, char **envp);
+int hey_exit(char **command, char **pathArr, char **envp);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -10,25 +9,22 @@ int hey_cd(char **argArr, char **__attribute__((__unused__)) **front);
  * @command: The command to match.
  * Return: A function pointer to the corresponding builtin.
  */
-int *runBuiltIn(char **command, char **pathArr, char **envp)
+int runBuiltIn(char **command, char **pathArr, char **envp)
 {
-	builtIn_t funcs[] = {
+	builtIn_t betty[] = {
 		{ "exit", hey_exit },
-		{ "env", hey_env },
-		{ "setenv", hey_setenv },
-		{ "unsetenv", hey_unsetenv },
-		{ "cd", hey_cd },
-		{ "alias", hey_alias },
 		{ NULL, NULL }
 	};
 	int i;
-
-	for (i = 0; funcs[i].fun; i++)
+	for (i = 0; betty[i].fun; i++)
 	{
-		if (_strcmp(funcs[i].fun, command[0]) (pathArr, envp)== 0)
+		if (_strcmp(betty[i].fun, command[0]) == 0)
+		{
+			betty[i].f(envp, command, pathArr);
 			break;
+		}
 	}
-	return (funcs[i].f);
+	return (i);
 }
 
 /**
@@ -43,9 +39,9 @@ int *runBuiltIn(char **command, char **pathArr, char **envp)
  *
  * Description: Upon returning -3, the program exits back in the main function.
  */
-int hey_exit(char **argArr, char **front)
+int hey_exit(char **command, char **pathArr, char **envp)
 {
-	int i, len_of_int = 10;
+	/* int i, len_of_int = 10;
 	unsigned int num = 0, max = 1 << (sizeof(int) * 8 - 1);
 
 	if (argArr[0])
@@ -74,6 +70,12 @@ int hey_exit(char **argArr, char **front)
 	free_env();
 	free_alias_list(aliases);
 	exit(num);
+	*/
+	if (envp)
+		/*place holder*/
+	free_tokens(command);
+	free_path(pathArr);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -85,6 +87,7 @@ int hey_exit(char **argArr, char **front)
  *         If an error occurs - -1.
  *         Otherwise - 0.
  */
+/*
 int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
 {
 	char **dir_info, *new_line = "\n";
@@ -156,3 +159,4 @@ int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
 	free(dir_info);
 	return (0);
 }
+*/
