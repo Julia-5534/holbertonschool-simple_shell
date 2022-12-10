@@ -12,10 +12,12 @@ char *_itoa(int num);
  */
 char **get_input(char *input)
 {
+	int i;
 	char **command;
-	char *separator = " ";
+	char *separator = " \t";
 
-	command = tokstr(input, separator);
+	for (i = 0; separator[i]; i++)
+		command = tokstr(input, &separator[i]);
 	return (command);
 }
 
