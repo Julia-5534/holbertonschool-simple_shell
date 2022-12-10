@@ -1,7 +1,7 @@
 #include "shell.h"
 
-int runBuiltIn(char**command, char **pathArr, char **envp);
-int hey_exit(char **command, char **pathArr, char **envp);
+int runBuiltIn(char**command, char **envp);
+int hey_exit(char **command, char **envp);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -9,7 +9,7 @@ int hey_exit(char **command, char **pathArr, char **envp);
  * @command: The command to match.
  * Return: A function pointer to the corresponding builtin.
  */
-int runBuiltIn(char **command, char **pathArr, char **envp)
+int runBuiltIn(char **command, char **envp)
 {
 	builtIn_t betty[] = {
 		{ "exit", hey_exit },
@@ -20,7 +20,7 @@ int runBuiltIn(char **command, char **pathArr, char **envp)
 	{
 		if (_strcmp(betty[i].fun, command[0]) == 0)
 		{
-			betty[i].f(envp, command, pathArr);
+			betty[i].f(command, envp);
 			break;
 		}
 	}
@@ -39,7 +39,7 @@ int runBuiltIn(char **command, char **pathArr, char **envp)
  *
  * Description: Upon returning -3, the program exits back in the main function.
  */
-int hey_exit(char **command, char **pathArr, char **envp)
+int hey_exit(char **command, char **envp)
 {
 	/* int i, len_of_int = 10;
 	unsigned int num = 0, max = 1 << (sizeof(int) * 8 - 1);

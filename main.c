@@ -1,5 +1,7 @@
 #include "shell.h"
 
+char **pathArr;
+
 /**
  * main - Entry point for ghost
  * @argc: arg count
@@ -12,20 +14,18 @@ int main(int argc, char *argv[], char *envp[])
 	pid_t child_pid;
 	int stat1, retVal;
 	ssize_t eRet = 0;
-	char *line = NULL, *moneySign, *thePath = NULL;
-	char **command, **pathArr;
+	char *line = NULL, *thePath = NULL, **command;
 	char *pName = argv[0];
 
-	moneySign = "$ ";
 	pathArr = path_locate(envp);
-	if (argc || argv[0] || moneySign)
+	if (argc || argv[0])
 	{
 		/* placeholder */
 	}
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, moneySign, 2);
+			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
 		{
@@ -33,7 +33,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		command = get_input(line);
 		free(line);
-		retVal = runBuiltIn(command, pathArr, envp);
+		retVal = runBuiltIn(command, envp);
 		if (retVal >= 0)
 		{
 			continue;

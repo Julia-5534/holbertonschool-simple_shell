@@ -28,7 +28,7 @@ extern char **environ;
 typedef struct builtIn_s
 {
 	char *fun;
-	int (*f)(char **envp, char **command, char **pathArr);
+	int (*f)(char **param1, char **param2);
 } builtIn_t;
 
 /**
@@ -46,7 +46,7 @@ typedef struct alias_s
 
 /* global */
 int hist;
-char *name;
+extern char **pathArr;
 alias_t *aliases;
 
 /*
@@ -99,8 +99,8 @@ void errorHand(int eNum, char *arg, char *pName);
 char *enviro(char *envar);
 
 /* defined in built_in.c */
-int runBuiltIn(char **command, char **pathArr, char **envp);
-int hey_exit(char **command, char **pathArr, char **envp);
+int runBuiltIn(char **command, char **envp);
+int hey_exit(char **command, char **envp);
 
 /*
 int hey_cd(char **command, char **pathArr, char **envp);
