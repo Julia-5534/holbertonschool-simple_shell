@@ -69,5 +69,5 @@ int main(int argc, char *argv[], char *envp[])
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (eRet);
+	return (0);
 }
