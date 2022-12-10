@@ -28,14 +28,26 @@ int main(int argc, char *argv[], char *envp[])
 			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
+		{
 			break;
-		command = get_input(line);
-		if (command[0][0] == '\n')
+		}
+		if (eRet == -2)
+		{
 			continue;
+		}
+		command = get_input(line);
 		free(line);
+		if (command[0][0] == '\n')
+		{
+			free_tokens(command);
+			continue;
+		}
 		retVal = runBuiltIn(command, envp);
 		if (retVal >= 0)
+		{
+			free_tokens(command);
 			continue;
+		}
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{

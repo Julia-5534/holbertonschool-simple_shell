@@ -59,6 +59,12 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	}
 	if (inCount > 1)
 		buff[inCount - 1] = '\0';
+	else if (inCount == 1)
+	{
+		free(buff);
+		inCount = 0;
+		return (-2);
+	}
 	*line = buff;
 	if (readRet != 0)
 	{
