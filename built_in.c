@@ -18,7 +18,7 @@ int runBuiltIn(char **command, char **envp)
 	int i;
 	for (i = 0; betty[i].fun; i++)
 	{
-		if (_strcmp(betty[i].fun, command[0]) == 0)
+		if (_strcmp(betty[i].fun, command[0]) == 0 && _strlen(command[0]) == 4)
 		{
 			betty[i].f(command, envp);
 			return (i);
