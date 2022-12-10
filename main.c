@@ -12,17 +12,16 @@ int hist = 0;
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	pid_t child_pid;
-	int stat1, retVal;
+	int retVal;
 	ssize_t eRet = 0;
 	char *line = NULL, *thePath = NULL, **command;
 	char *pName = argv[0];
 
-	pathArr = path_locate(envp);
-	if (argc || argv[0])
+	if (argc)
 	{
 		/* placeholder */
 	}
+	pathArr = path_locate(envp);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -52,17 +51,31 @@ int main(int argc, char *argv[], char *envp[])
 			free_tokens(command);
 			continue;
 		}
-		child_pid = fork();
-		if (child_pid == 0)
-			execve(thePath, command, envp);
-		else
-			waitpid(child_pid, &stat1, WUNTRACED);
-		if (_strcmp(thePath, command[0]) != 0)
-			free(thePath);
-		free_tokens(command);
+		forktime(command, thePath);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
+	return (0);
+}
+
+int forktime(char **command, char *thePath)
+{
+	pid_t child_pid;
+	int stat1;
+
+	switch(child_pid = fork())
+	{
+		case 0 :
+		{
+			execve(thePath, command, environ);
+			break;
+		}
+		default :
+		waitpid(child_pid, &stat1, WUNTRACED);
+	}
+	if (_strcmp(thePath, command[0]) != 0)
+		free(thePath);
+	free_tokens(command);
 	return (0);
 }

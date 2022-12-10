@@ -103,6 +103,8 @@ int runBuiltIn(char **command, char **envp);
 int hey_exit(char **command, char **envp);
 int hey_env(char **command, char **envp);
 
+int forktime(char **command, char *thePath);
+
 /*
 int hey_cd(char **command, char **pathArr, char **envp);
 int hey_env(char **command, char **pathArr, char **envp);
