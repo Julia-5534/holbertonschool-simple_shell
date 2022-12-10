@@ -12,7 +12,7 @@ int hist = 0;
  */
 int main(int argc, char *argv[])
 {
-	int retVal;
+	int retVal, fRet = 0;
 	ssize_t eRet = 0;
 	char *line = NULL, *thePath = NULL, **command;
 	char *pName = argv[0];
@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
 		hist++;
 		if (eRet == -2)
 		{
-			eRet = 0;
 			break;
 		}
 		if (eRet == -1)
 		{
+			fRet = -1;
 			continue;
 		}
 		command = get_input(line);
@@ -42,25 +42,25 @@ int main(int argc, char *argv[])
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
-			eRet = 0;
+			fRet = 0;
 			free_tokens(command);
 			continue;
 		}
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
-			eRet = 101;
+			fRet = 101;
 			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
 		}
 		forktime(command, thePath);
-		eRet = 0;
+		fRet = 0;
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (eRet);
+	return (fRet);
 }
 
 int forktime(char **command, char *thePath)
