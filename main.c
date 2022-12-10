@@ -68,12 +68,13 @@ int forktime(char **command, char *thePath)
 
 	switch(child_pid = fork())
 	{
-		case 0 :
+		case 0:
 		{
 			execve(thePath, command, environ);
-			break;
+			perror("BAD MAGIC");
+			exit(EXIT_FAILURE);
 		}
-		default :
+		default:
 		waitpid(child_pid, &stat1, WUNTRACED);
 	}
 	if (_strcmp(thePath, command[0]) != 0)
