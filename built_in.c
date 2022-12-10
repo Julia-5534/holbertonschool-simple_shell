@@ -179,7 +179,7 @@ int hey_env(char **command, char **envp)
 
 	if (command)
 	/* placeholder */
-	for (i = 0; envp[i + 1]; i++)
+	for (i = 0; envp[i]; i++)
 	{
 		write(STDOUT_FILENO, envp[i], _strlen(envp[i]));
 		write(STDOUT_FILENO, "\n", 1);
