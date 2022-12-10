@@ -1,6 +1,7 @@
 #include "shell.h"
 
 char **pathArr;
+int hist = 0;
 
 /**
  * main - Entry point for ghost
@@ -27,6 +28,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
+		hist++;
 		if (eRet == -2)
 		{
 			break;
@@ -46,7 +48,7 @@ int main(int argc, char *argv[], char *envp[])
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
-			errorHand(101, command[0], pName);
+			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
 		}
