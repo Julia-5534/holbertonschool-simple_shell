@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
-			fRet = 101;
+			fRet = 127;
 			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
