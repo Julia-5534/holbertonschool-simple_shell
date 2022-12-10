@@ -27,11 +27,11 @@ int main(int argc, char *argv[], char *envp[])
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
-		if (eRet == -1)
+		if (eRet == -2)
 		{
 			break;
 		}
-		if (eRet == -2)
+		if (eRet == -1)
 		{
 			continue;
 		}
@@ -51,7 +51,6 @@ int main(int argc, char *argv[], char *envp[])
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
-			eRet = -1;
 			errorHand(101, command[0], pName);
 			free_tokens(command);
 			continue;
@@ -64,7 +63,6 @@ int main(int argc, char *argv[], char *envp[])
 		if (_strcmp(thePath, command[0]) != 0)
 			free(thePath);
 		free_tokens(command);
-		eRet = 0;
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
