@@ -98,29 +98,29 @@ char *check_paths(char *command)
 	struct stat s;
 	char *cmpPath = NULL;
 
-	if (command[0] == '/')
+	if (command[0] != '/' && command[0] != '.')
 	{
-		if (stat(command, &s) == 0)
+		for (; pathArr[i]; i++)
 		{
-			return (command);
-		}
-		else
-		{
-			return (NULL);
+			pathLen = (_strlen(pathArr[i]) + _strlen(command) + 2);
+			cmpPath = malloc(sizeof(char) * pathLen);
+			_strcpy(cmpPath, pathArr[i]);
+			_strcat(cmpPath, "/");
+			_strcat(cmpPath, command);
+			if (stat(cmpPath, &s) == 0)
+			{
+				return (cmpPath);
+			}
+			free(cmpPath);
 		}
 	}
-	for (; pathArr[i]; i++)
+	if (stat(command, &s) == 0)
 	{
-		pathLen = (_strlen(pathArr[i]) + _strlen(command) + 2);
-		cmpPath = malloc(sizeof(char) * pathLen);
-		_strcpy(cmpPath, pathArr[i]);
-		_strcat(cmpPath, "/");
-		_strcat(cmpPath, command);
-		if (stat(cmpPath, &s) == 0)
-		{
-			return (cmpPath);
-		}
-		free(cmpPath);
+		return (command);
+	}
+	else
+	{
+		return (NULL);
 	}
 	return (NULL);
 }
