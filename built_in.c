@@ -1,8 +1,8 @@
 #include "shell.h"
 
-int runBuiltIn(char**command, char **envp);
-int hey_exit(char **command, char **envp);
-int hey_env(char **command, char **envp);
+int runBuiltIn(char**command);
+int hey_exit(char **command);
+int hey_env(char **command);
 
 /**
  * get_builtin - Matches a command with a corresponding
@@ -10,7 +10,7 @@ int hey_env(char **command, char **envp);
  * @command: The command to match.
  * Return: A function pointer to the corresponding builtin.
  */
-int runBuiltIn(char **command, char **envp)
+int runBuiltIn(char **command)
 {
 	builtIn_t betty[] = {
 		{ "exit", hey_exit },
@@ -22,7 +22,7 @@ int runBuiltIn(char **command, char **envp)
 	{
 		if (_strcmp(betty[i].fun, command[0]) == 0 && _strlen(command[0]) == _strlen(betty[i].fun))
 		{
-			betty[i].f(command, envp);
+			betty[i].f(command);
 			return (i);
 		}
 	}
@@ -41,7 +41,7 @@ int runBuiltIn(char **command, char **envp)
  *
  * Description: Upon returning -3, the program exits back in the main function.
  */
-int hey_exit(char **command, char **envp)
+int hey_exit(char **command)
 {
 	/* int i, len_of_int = 10;
 	unsigned int num = 0, max = 1 << (sizeof(int) * 8 - 1);
@@ -73,8 +73,6 @@ int hey_exit(char **command, char **envp)
 	free_alias_list(aliases);
 	exit(num);
 	*/
-	if (envp)
-		/*place holder*/
 	free_tokens(command);
 	free_path(pathArr);
 	exit(EXIT_SUCCESS);
@@ -173,12 +171,11 @@ int hey_cd(char **argArr, char **__attribute__((__unused__)), **front)
  * Description: Prints one variable per line in the
  *              format 'variable'='value'.
  */
-int hey_env(char **command, char **envp)
+int hey_env(char **command)
 {
 	int i, j;
 
-	if (command || envp)
-	/* placeholder */
+	if (command)
 	for (i = 0; environ[i]; i++)
 	{
 		for (j = 0; environ[i][j]; j++)

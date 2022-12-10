@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char **path_locate(char *envvars[]);
+char **path_locate(char *envvar);
 char **path_tok(char *path);
 void print_paths(char **pathArr);
 char *check_paths(char *command);
@@ -10,16 +10,16 @@ char *check_paths(char *command);
  * @envvars: env var array in
  * Return: array of path strs
  */
-char **path_locate(char *envvars[])
+char **path_locate(char *envvars)
 {
 	unsigned int i = 0;
 	char **daWay = NULL;
 
-	for (; envvars[i]; i++)
+	for (; environ[i]; i++)
 	{
-		if (_strncmp("PATH", envvars[i], 4) == 0)
+		if (_strncmp(envvars, environ[i], 4) == 0)
 		{
-			daWay = path_tok(envvars[i]);
+			daWay = path_tok(environ[i]);
 			return (daWay);
 		}
 	}

@@ -10,7 +10,7 @@ int hist = 0;
  * @envp: array of inherited environment vars
  * Return: TBD
  */
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[])
 {
 	int retVal;
 	ssize_t eRet = 0;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		/* placeholder */
 	}
-	pathArr = path_locate(envp);
+	pathArr = path_locate("PATH");
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -38,7 +38,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		command = get_input(line);
 		free(line);
-		retVal = runBuiltIn(command, envp);
+		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
 			free_tokens(command);

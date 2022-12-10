@@ -31,7 +31,7 @@ extern char **environ;
 typedef struct builtIn_s
 {
 	char *fun;
-	int (*f)(char **param1, char **param2);
+	int (*f)(char **param1);
 } builtIn_t;
 
 /**
@@ -86,7 +86,7 @@ int _strncmp(char *s1, char *s2, int n);
 unsigned int _strspn(char *s, char *accept);
 
 /* defined in pathfinder.c */
-char **path_locate(char *envvars[]);
+char **path_locate(char *envvar);
 char **path_tok(char *path);
 void print_paths(char **pathArr);
 /* ^^ I adjusted that one */
@@ -99,9 +99,9 @@ void errorHand(int eNum, char *arg, char *pName);
 char *enviro(char *envar);
 
 /* defined in built_in.c */
-int runBuiltIn(char **command, char **envp);
-int hey_exit(char **command, char **envp);
-int hey_env(char **command, char **envp);
+int runBuiltIn(char **command);
+int hey_exit(char **command);
+int hey_env(char **command);
 
 int forktime(char **command, char *thePath);
 
