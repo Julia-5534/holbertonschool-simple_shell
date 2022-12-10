@@ -51,6 +51,7 @@ int main(int argc, char *argv[], char *envp[])
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
+			eRet = -1;
 			errorHand(101, command[0], pName);
 			free_tokens(command);
 			continue;
@@ -63,9 +64,10 @@ int main(int argc, char *argv[], char *envp[])
 		if (_strcmp(thePath, command[0]) != 0)
 			free(thePath);
 		free_tokens(command);
+		eRet = 0;
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (0);
+	return (eRet);
 }
