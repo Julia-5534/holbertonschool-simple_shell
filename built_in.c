@@ -21,10 +21,11 @@ int runBuiltIn(char **command, char **envp)
 		if (_strcmp(betty[i].fun, command[0]) == 0)
 		{
 			betty[i].f(command, envp);
+			return (i);
 			break;
 		}
 	}
-	return (i);
+	return (-1);
 }
 
 /**

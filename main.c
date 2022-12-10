@@ -28,17 +28,13 @@ int main(int argc, char *argv[], char *envp[])
 			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
 		if (eRet == -1)
-		{
 			break;
-		}
 		command = get_input(line);
 		free(line);
 		retVal = runBuiltIn(command, envp);
 		if (retVal >= 0)
-		{
 			continue;
-		}
-		thePath = check_paths(pathArr, command[0]);
+		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
 			errorHand(101, command[0], pName);

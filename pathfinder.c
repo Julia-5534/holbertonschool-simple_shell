@@ -3,7 +3,7 @@
 char **path_locate(char *envvars[]);
 char **path_tok(char *path);
 void print_paths(char **pathArr);
-char *check_paths(char **pathArr, char *command);
+char *check_paths(char *command);
 
 /**
  * path_locate - yoinks path from env
@@ -92,7 +92,7 @@ void print_paths(char **pathArr)
  * @command: first tok of command array
  * Return: num of valid path located or NULL if none
  */
-char *check_paths(char **pathArr, char *command)
+char *check_paths(char *command)
 {
 	unsigned int i = 0, pathLen = 0;
 	struct stat s;
