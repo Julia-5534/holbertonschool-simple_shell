@@ -56,7 +56,6 @@ char **tokstr(char *line, char *delims)
 	int i, j = 0, k, tokTotal, ssLen = 0;
 
 	tokTotal = tok_num(line, delims);
-	printf("%d\n", tokTotal);
 	tokenStorage = malloc(sizeof(char *) * (tokTotal + 1));
 	for (i = 0; i < tokTotal; i++)
 	{
