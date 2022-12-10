@@ -98,6 +98,17 @@ char *check_paths(char *command)
 	struct stat s;
 	char *cmpPath = NULL;
 
+	if (command[0] == '/')
+	{
+		if (stat(command, &s) == 0)
+		{
+			return (command);
+		}
+		else
+		{
+			return (NULL);
+		}
+	}
 	for (; pathArr[i]; i++)
 	{
 		pathLen = (_strlen(pathArr[i]) + _strlen(command) + 2);
@@ -111,7 +122,5 @@ char *check_paths(char *command)
 		}
 		free(cmpPath);
 	}
-	if (stat(command, &s) == 0)
-		return (command);
 	return (NULL);
 }
