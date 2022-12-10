@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int runBuiltIn(char**command);
+int runBuiltIn(char **command);
 int hey_exit(char **command);
 int hey_env(char **command);
 

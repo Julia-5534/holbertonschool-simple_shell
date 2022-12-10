@@ -41,22 +41,25 @@ int main(int argc, char *argv[])
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
+			eRet = 0;
 			free_tokens(command);
 			continue;
 		}
 		thePath = check_paths(command[0]);
 		if (!(thePath))
 		{
+			eRet = 101;
 			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
 		}
 		forktime(command, thePath);
+		eRet = 0;
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (0);
+	return (eRet);
 }
 
 int forktime(char **command, char *thePath)
