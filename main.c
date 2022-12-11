@@ -69,7 +69,8 @@ int forktime(char **command, char *thePath, char *pName)
 		case 0:
 		{
 			execve(thePath, command, environ);
-			break;
+			perror(pName);
+			exit(EXIT_FAILURE);
 		}
 		case -1:
 		{
