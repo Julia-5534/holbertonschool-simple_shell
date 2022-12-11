@@ -45,17 +45,18 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		thePath = check_paths(command[0]);
-		fRet = forktime(command, thePath);
-		if (fRet == 126 || fRet == 127)
+		if (!(thePath))
 		{
 			errorHand(hist, command[0], pName);
+			free_tokens(command);
+			continue;
 		}
-		free_tokens(command);
+		fRet = forktime(command, thePath);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (0);
+	return (fRet);
 }
 
 int forktime(char **command, char *thePath)
