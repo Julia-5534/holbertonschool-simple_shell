@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		thePath = check_paths(command[0]);
-		if (!(thePath))
+		if (!(thePath) || access((thePath), X_OK) != 0)
 		{
-			errorHand(hist, command[0], pName);
+			perror(pName);
 			free_tokens(command);
 			continue;
 		}
