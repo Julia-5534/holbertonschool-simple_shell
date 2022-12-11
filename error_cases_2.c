@@ -21,7 +21,7 @@ char *error_cd(char **argArr)
 
 	if (argArr[0][0] == '-')
 		argArr[0][2] = '\0';
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 24;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -29,7 +29,7 @@ char *error_cd(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	if (argArr[0][0] == '-')
@@ -57,7 +57,7 @@ char *error_syn(char **argArr)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 33;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 33;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -65,7 +65,7 @@ char *error_syn(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": Syntax error: \"");
@@ -90,7 +90,7 @@ char *error_126(char **argArr)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 24;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -98,7 +98,7 @@ char *error_126(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": ");
@@ -123,7 +123,7 @@ char *error_127(char **argArr)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 16;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -131,7 +131,7 @@ char *error_127(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": ");

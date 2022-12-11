@@ -2,6 +2,7 @@
 
 char **pathArr;
 int hist = 0;
+char *pName;
 
 /**
  * main - Entry point for ghost
@@ -12,15 +13,12 @@ int hist = 0;
  */
 int main(int argc, char *argv[])
 {
-	int retVal, fRet = 0;
-	ssize_t eRet = 0;
+	int retVal, fRet = 0, eRet = 0;
 	char *line = NULL, *thePath = NULL, **command;
-	char *pName = argv[0];
 
-	if (argc)
-	{
-		/* placeholder */
-	}
+	pName = argv[0];
+	if (argc != 1)
+		exit(EXIT_FAILURE);
 	pathArr = path_locate("PATH");
 	while (1)
 	{
@@ -29,13 +27,9 @@ int main(int argc, char *argv[])
 		eRet = yoinkline(&line, stdin);
 		hist++;
 		if (eRet == -2)
-		{
 			break;
-		}
 		if (eRet == -1)
-		{
 			continue;
-		}
 		command = get_input(line);
 		free(line);
 		retVal = runBuiltIn(command);
@@ -51,7 +45,7 @@ int main(int argc, char *argv[])
 			free_tokens(command);
 			continue;
 		}
-		fRet = forktime(command, thePath, pName);
+		fRet = forktime(command, thePath);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
@@ -59,7 +53,7 @@ int main(int argc, char *argv[])
 	return (fRet);
 }
 
-int forktime(char **command, char *thePath, char *pName)
+int forktime(char **command, char *thePath)
 {
 	pid_t child_pid;
 	int stat1, eRet = 0;

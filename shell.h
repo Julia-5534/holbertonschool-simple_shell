@@ -18,6 +18,7 @@
 
 /* global */
 int hist;
+extern char *pName;
 extern char **pathArr;
 extern char **environ;
 
@@ -103,7 +104,7 @@ int runBuiltIn(char **command);
 int hey_exit(char **command);
 int hey_env(char **command);
 
-int forktime(char **command, char *thePath, char *pName);
+int forktime(char **command, char *thePath);
 
 /*
 int hey_cd(char **command, char **pathArr, char **envp);
@@ -114,14 +115,18 @@ char **_getenv(char *var);
 int hey_alias(char **command, char **pathArr, char **envp);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
-char *error_cd(char **argArr);
-char *error_syn(char **argArr);
-char *error_126(char **argArr);
-char *error_127(char **argArr);
+*/
+
+/* defined in error_cases.c */
 int create_error(char **argArr, int err);
 char *error_env(char **argArr);
 char *error_1(char **argArr);
 char *error_exit(char **argArr);
-*/
+
+/* defined in error_cases_2.c */
+char *error_cd(char **argArr);
+char *error_syn(char **argArr);
+char *error_126(char **argArr);
+char *error_127(char **argArr);
 
 #endif

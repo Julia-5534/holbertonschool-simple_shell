@@ -60,7 +60,7 @@ char *error_env(char **argArr)
 		return (NULL);
 
 	argArr--;
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 45;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 45;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -68,7 +68,7 @@ char *error_env(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": ");
@@ -89,7 +89,7 @@ char *error_1(char **argArr)
 	char *error;
 	int len;
 
-	len = _strlen(name) + _strlen(argArr[0]) + 13;
+	len = _strlen(pName) + _strlen(argArr[0]) + 13;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 		return (NULL);
@@ -115,7 +115,7 @@ char *error_exit(char **argArr)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen(name) + _strlen(hist_str) + _strlen(argArr[0]) + 27;
+	len = _strlen(pName) + _strlen(hist_str) + _strlen(argArr[0]) + 27;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -123,7 +123,7 @@ char *error_exit(char **argArr)
 		return (NULL);
 	}
 
-	_strcpy(error, name);
+	_strcpy(error, pName);
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": exit: Illegal number: ");
