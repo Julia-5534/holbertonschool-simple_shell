@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 			free_tokens(command);
 			continue;
 		}
-		fRet = forktime(command, thePath);
+		fRet = forktime(command, thePath, pName);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
@@ -59,21 +59,24 @@ int main(int argc, char *argv[])
 	return (fRet);
 }
 
-int forktime(char **command, char *thePath)
+int forktime(char **command, char *thePath, char *pName)
 {
 	pid_t child_pid;
 	int stat1, eRet = 0;
 
-	if (!thePath)
-		return (127);
 	switch(child_pid = fork())
 	{
-		case 0 :
+		case 0:
 		{
 			execve(thePath, command, environ);
 			break;
 		}
-		default :
+		case -1:
+		{
+			perror(pName);
+			exit(EXIT_FAILURE);
+		}
+		default:
 		waitpid(child_pid, &stat1, WUNTRACED);
 	}
 	if (_strcmp(thePath, command[0]) != 0)
