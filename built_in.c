@@ -2,7 +2,7 @@
 
 int runBuiltIn(char **command);
 int hey_exit(char **command);
-int hey_env(char **command);
+int hey_env(void);
 
 /**
  * runBuiltIn - function that runs built in commands
@@ -42,25 +42,22 @@ int hey_exit(char **command)
 
 /**
  * hey_env - built in function to print local env
- * @command: array of strings containing command and args
- * Return: -1 on bad magic 0 otherwise
+ * Return: status
  */
-int hey_env(char **command)
+int hey_env(void)
 {
-	int i, j;
+	int j = 0, i = 0;
 
-	if (!(environ))
+	while (environ[i] != NULL)
 	{
-		return (-1);
-	}
-	for (i = 0; environ[i]; i++)
-	{
-		for (j = 0; environ[i][j]; j++)
+		j = 0;
+		while (environ[i][j] != '\0')
 		{
-			write(STDOUT_FILENO, &environ[i][j], 1);
+			write(environ[i][j]);
+			j++;
 		}
-		write(STDOUT_FILENO, "\n", 1);
+		write('\n');
+		i++;
 	}
-	(void)command;
 	return (0);
 }

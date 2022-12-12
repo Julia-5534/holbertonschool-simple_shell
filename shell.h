@@ -95,7 +95,7 @@ void errorHand(int eNum, char *arg, char *pName);
 /* defined in built_in.c */
 int runBuiltIn(char **command);
 int hey_exit(char **command);
-int hey_env(char **command);
+int hey_env(void);
 
 /* defined in main.c */
 
