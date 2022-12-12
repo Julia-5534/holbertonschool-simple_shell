@@ -57,6 +57,11 @@ unsigned int _strspn(char *s, char *accept)
 	return (bCount);
 }
 
+/**
+ * cleanstr - cleans up strings
+ * @line: to clean
+ * Return: 0
+*/
 int cleanstr(char *line)
 {
 	int i = 0;

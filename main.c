@@ -1,10 +1,5 @@
 #include "shell.h"
 
-char **pathArr;
-int ret_val = 0;
-int hist = 0;
-char *pName;
-
 /**
  * main - Entry point for ghost
  * @argc: arg count
