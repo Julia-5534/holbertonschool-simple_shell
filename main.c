@@ -22,13 +22,7 @@ int main(int argc, char *argv[])
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&line, &llen, stdin) < 0)
-		{
-			free(line);
-			free_path(pathArr);
-			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);
-			exit(ret_val);
-		}
+			free_exit(line);
 		cleanstr(line);
 		if (tok_num(line, " ") <= 0)
 		{
