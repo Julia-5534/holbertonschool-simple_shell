@@ -8,6 +8,7 @@ char **_getenv(char *var);
  * hey_setenv - Changes or adds an environmental variable to the PATH.
  * @argArr: An array of arguments passed to the shell.
  * @front: A double pointer to the beginning of args.
+ * @args: because we said so
  * Description: argArr[1] is the name of the new or existing PATH variable.
  *              argArr[2] is the value to set the new or changed variable to.
  *
@@ -17,6 +18,7 @@ char **_getenv(char *var);
 int hey_setenv(char __attribute__((__unused__)) **args, char __attribute__((__unused__)) **argArr, char __attribute__((__unused__)) **front)
 {
 	char **env_var = NULL, **new_environ, *new_value;
+	char args;
 	size_t size;
 	int index;
 
@@ -62,6 +64,7 @@ int hey_setenv(char __attribute__((__unused__)) **args, char __attribute__((__un
  * hey_unsetenv - Deletes an environmental variable from the PATH.
  * @argArr: An array of arguments passed to the shell.
  * @front: A double pointer to the beginning of args.
+ * @whatx: because we said so
  * Description: argArr[1] is the PATH variable to remove.
  *
  * Return: If an error occurs - -1.
@@ -70,6 +73,7 @@ int hey_setenv(char __attribute__((__unused__)) **args, char __attribute__((__un
 int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **whatx, char __attribute__((__unused__)) **front)
 {
 	char **env_var, **new_environ;
+	char whatx;
 	size_t size;
 	int index, index2;
 

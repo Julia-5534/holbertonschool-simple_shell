@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * hey_cd - Changes the current directory of the shellby process.
  * @argArr: An array of arguments.
