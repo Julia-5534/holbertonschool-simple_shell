@@ -155,15 +155,23 @@ char *_itoa(int num)
 int forktime(char **command, char *thePath)
 {
 	pid_t child_pid;
-	int stat1;
+	int stat1, exRet;
 
 	switch(child_pid = fork())
 	{
 		case 0:
 		{
-			execve(thePath, command, environ);
-			perror(pName);
-			exit(EXIT_FAILURE);
+			exRet = execve(thePath, command, environ);
+			if (exRet == -1)
+			{
+				perror(pName);
+				if (_strcmp(thePath, command[0]) != 0)
+					free(thePath);
+				free_tokens(command);
+				free_path(pathArr);
+				exit(127);
+			}
+			break;
 		}
 		case -1:
 		{
