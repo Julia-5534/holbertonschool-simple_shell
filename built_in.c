@@ -22,6 +22,7 @@ int runBuiltIn(char **command)
 		if (_strcmp(betty[i].fun, command[0]) == 0 && _strlen(command[0]) == _strlen(betty[i].fun))
 		{
 			betty[i].f(command);
+			ret_val = 0;
 			return (i);
 		}
 	}
