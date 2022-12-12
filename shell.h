@@ -90,7 +90,6 @@ unsigned int _strspn(char *s, char *accept);
 char **path_locate(char *envvar);
 char **path_tok(char *path);
 void print_paths(char **pathArr);
-/* ^^ I adjusted that one */
 char *check_paths(char *command);
 
 /* defined in error_elephant.c */
@@ -106,16 +105,15 @@ int hey_env(char **command);
 
 int forktime(char **command, char *thePath);
 
-/*
-int hey_cd(char **command, char **pathArr, char **envp);
-int hey_env(char **command, char **pathArr, char **envp);
-int hey_setenv(char **command, char **pathArr, char **envp);
+/* defined in env_setenv_unsetenv_getenv.c */
+int hey_setenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);
 int hey_unsetenv(char **command, char **pathArr, char **envp);
 char **_getenv(char *var);
-int hey_alias(char **command, char **pathArr, char **envp);
+
+/* defined in alias_builtins.c */
+int hey_alias(char **argArr, char __attribute__((__unused__)) **front);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
-*/
 
 /* defined in error_cases.c */
 int create_error(char **argArr, int err);

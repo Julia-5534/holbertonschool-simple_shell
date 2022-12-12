@@ -1,37 +1,8 @@
 #include "shell.h"
 
-int hey_env(char **args, char **__attribute__((__unused__)), char **front);
-int hey_setenv(char **args, char **__attribute__((__unused__)), char **front);
-int hey_unsetenv(char **args, char **__attribute__((__unused__)), char **front);
+int hey_setenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);
+int hey_unsetenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);
 char **_getenv(char *var);
-
-/**
- * hey_env - Prints the current environment.
- * @argArr: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of argArr.
- * Return: If an error occurs - -1.
- *	   Otherwise - 0.
- *
- * Description: Prints one variable per line in the
- *              format 'variable'='value'.
- */
-int hey_env(char **argArr, char **__attribute__((__unused__)), char **front)
-{
-	int index;
-	char nc = '\n';
-
-	if (!environ)
-		return (-1);
-
-	for (index = 0; environ[index]; index++)
-	{
-		write(STDOUT_FILENO, environ[index], _strlen(environ[index]));
-		write(STDOUT_FILENO, &nc, 1);
-	}
-
-	(void)argArr;
-	return (0);
-}
 
 /**
  * hey_setenv - Changes or adds an environmental variable to the PATH.
@@ -43,7 +14,7 @@ int hey_env(char **argArr, char **__attribute__((__unused__)), char **front)
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hey_setenv(char **argArr, char **__attribute__((__unused__)), char **front)
+int hey_setenv(char __attribute__((__unused__)) **args, char __attribute__((__unused__)) **argArr, char __attribute__((__unused__)) **front)
 {
 	char **env_var = NULL, **new_environ, *new_value;
 	size_t size;
@@ -96,7 +67,7 @@ int hey_setenv(char **argArr, char **__attribute__((__unused__)), char **front)
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int hey_unsetenv(char **argArr, char **__attribute__((__unused__)), char **front)
+int hey_unsetenv(char **argArr, char __attribute__((__unused__)) **whatx, char __attribute__((__unused__)) **front)
 {
 	char **env_var, **new_environ;
 	size_t size;

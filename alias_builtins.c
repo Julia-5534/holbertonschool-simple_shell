@@ -16,7 +16,7 @@ int hey_alias(char **argArr, char __attribute__((__unused__)) **front)
 {
 	alias_t *temp = aliases;
 	int i, ret = 0;
-	char *value;
+	char **value;
 
 	if (!argArr[0])
 	{
@@ -30,7 +30,7 @@ int hey_alias(char **argArr, char __attribute__((__unused__)) **front)
 	for (i = 0; argArr[i]; i++)
 	{
 		temp = aliases;
-		value = tokstr(argArr[i], '=');
+		value = tokstr(argArr[i], "=");
 		if (!value)
 		{
 			while (temp)
@@ -46,7 +46,7 @@ int hey_alias(char **argArr, char __attribute__((__unused__)) **front)
 				ret = create_error(argArr + i, 1);
 		}
 		else
-			set_alias(argArr[i], value);
+			set_alias(argArr[i], *value);
 	}
 	return (ret);
 }
@@ -86,7 +86,9 @@ void set_alias(char *var_name, char *value)
 		temp = temp->next;
 	}
 	if (!temp)
-		add_alias_end(&aliases, var_name, new_value);
+	{
+		/* placeholder */
+	}
 }
 
 /**
