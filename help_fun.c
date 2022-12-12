@@ -169,7 +169,7 @@ int forktime(char **command, char *thePath)
 					free(thePath);
 				free_tokens(command);
 				free_path(pathArr);
-				exit(127);
+				exit(EXIT_FAILURE);
 			}
 			break;
 		}
