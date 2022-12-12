@@ -14,7 +14,6 @@ char *pName;
  */
 int main(int argc, char *argv[])
 {
-	int retVal;
 	char *line = NULL, *thePath = NULL, **command = NULL;
 
 	signal(SIGINT, sig_stop);
@@ -30,23 +29,15 @@ int main(int argc, char *argv[])
 		if (yoinkline(&line, stdin) == -1)
 			continue;
 		command = get_input(line);
-		retVal = runBuiltIn(command);
-		if (retVal >= 0)
-		{
-			free_tokens(command);
+		if (runBuiltIn(command) >= 0)
 			continue;
-		}
 		thePath = check_paths(command[0]);
 		if (access(thePath, X_OK) != 0)
 		{
 			if (access((thePath), F_OK) == 0)
-			{
 				ret_val = 126;
-			}
 			else
-			{
 				ret_val = 127;
-			}
 			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;

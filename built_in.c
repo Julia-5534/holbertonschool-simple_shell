@@ -23,6 +23,7 @@ int runBuiltIn(char **command)
 		{
 			betty[i].f(command);
 			ret_val = 0;
+			free_tokens(command);
 			return (i);
 		}
 	}
