@@ -1,7 +1,7 @@
 #include "shell.h"
 
 char **pathArr;
-int ret_val = 0;
+int ret_val = 1;
 int hist = 0;
 char *pName;
 
