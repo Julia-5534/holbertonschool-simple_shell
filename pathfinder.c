@@ -73,9 +73,5 @@ char *check_paths(char *command)
 	{
 		return (command);
 	}
-	else
-	{
-		return (NULL);
-	}
 	return (NULL);
 }

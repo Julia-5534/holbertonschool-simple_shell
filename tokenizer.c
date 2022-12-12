@@ -34,14 +34,13 @@ int tok_num(char *str, char *delims)
  */
 int substrLen(char *str, char *delims)
 {
-	int i = 0, tokLen = 0;
+	int i = 0;
 
 	while (str[i] && str[i] != delims[0] && str[i] != delims[1])
 	{
 		i++;
-		tokLen++;
 	}
-	return (tokLen);
+	return (i);
 }
 
 /**

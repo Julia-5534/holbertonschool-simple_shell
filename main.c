@@ -44,8 +44,5 @@ int main(int argc, char *argv[])
 		}
 		forktime(command, thePath);
 	}
-	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "\n", 1);
-	free_path(pathArr);
 	return (ret_val);
 }

@@ -42,9 +42,9 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	{
 		free_path(pathArr);
 		perror(pName);
-		exit(EXIT_FAILURE);
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
+		exit(EXIT_FAILURE);
 	}
 	inCount = 0;
 	buff = malloc(sizeof(char) * 151);
