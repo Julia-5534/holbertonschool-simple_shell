@@ -42,13 +42,12 @@ int main(int argc, char *argv[])
 			if (access((thePath), F_OK) == 0)
 			{
 				ret_val = 126;
-				perror(pName);
 			}
 			else
 			{
 				ret_val = 127;
-				errorHand(hist, command[0], pName);
 			}
+			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
 		}
