@@ -79,5 +79,5 @@ int main(int argc, char *argv[])
 		forktime(command, thePath);
 		}
 	}
-	return (ret_val);
+	return (0);
 }
