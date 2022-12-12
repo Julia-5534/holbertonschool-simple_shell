@@ -3,7 +3,6 @@
 void free_tokens(char **tokens);
 void free_path(char **paths);
 void free_env(void);
-void free_argArr(char **argArr, char **front);
 void free_alias_list(alias_t *head);
 
 /**
@@ -49,21 +48,6 @@ void free_env(void)
 	for (index = 0; environ[index]; index++)
 		free(environ[index]);
 	free(environ);
-}
-
-/**
- * free_argArr - Frees up memory taken by args.
- * @argArr: A null-terminated double pointer containing commands/arguments.
- * @front: A double pointer to the beginning of args.
- */
-void free_argArr(char **argArr, char **front)
-{
-	size_t i;
-
-	for (i = 0; argArr[i] || argArr[i + 1]; i++)
-		free(argArr[i]);
-
-	free(front);
 }
 
 /**

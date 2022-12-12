@@ -6,9 +6,9 @@ int num_len(int num);
 char *_itoa(int num);
 
 /**
- * get_input - takens input and tokenizes
- * @input: input to be tokd
- * Return: pointer to token array
+ * get_input - supplies approp. delims for command array
+ * @input: user input to be tokenized
+ * Return: array of strings cont. command and args
  */
 char **get_input(char *input)
 {
@@ -23,7 +23,7 @@ char **get_input(char *input)
  * yoinkline - our version of getline
  * @line: the line to be yoinked
  * @inbound: the inbound file to be yoinked
- * Return: inbound
+ * Return: 0 on success -1 if only newline
 */
 ssize_t yoinkline(char **line, FILE *inbound)
 {
@@ -38,17 +38,19 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	}
 	else
 	{
-		return (-1);
+		free_path(pathArr);
+		exit(EXIT_FAILURE);
 	}
 	inCount = 0;
 	buff = malloc(sizeof(char) * 151);
 	while (c != '\n')
 	{
 		readRet = read(STDIN_FILENO, &c, 1);
-		if (readRet == EOF || (readRet == 0 && inCount == 0))
+		if ((readRet == 0 && inCount == 0) || readRet == -1)
 		{
 			free(buff);
-			return (-2);
+			free_path(pathArr);
+			exit(EXIT_SUCCESS);
 		}
 		if (readRet == 0 && inCount > 0)
 		{
@@ -59,18 +61,14 @@ ssize_t yoinkline(char **line, FILE *inbound)
 		inCount++;
 	}
 	buff[inCount - 1] = '\0';
-	if (inCount == 1)
+	inCount = 0;
+	if (!buff[0])
 	{
 		free(buff);
-		inCount = 0;
 		return (-1);
 	}
 	*line = buff;
-	if (readRet != 0)
-	{
-		inCount = 0;
-	}
-	return (inCount);
+	return (0);
 }
 
 /**

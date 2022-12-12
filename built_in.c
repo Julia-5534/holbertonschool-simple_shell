@@ -5,10 +5,9 @@ int hey_exit(char **command);
 int hey_env(char **command);
 
 /**
- * get_builtin - Matches a command with a corresponding
- *               builtin function.
- * @command: The command to match.
- * Return: A function pointer to the corresponding builtin.
+ * runBuiltIn - function that runs built in commands
+ * @command: array of strings containing command and args
+ * Return: -1 if command isn't built in, else index num of built in
  */
 int runBuiltIn(char **command)
 {

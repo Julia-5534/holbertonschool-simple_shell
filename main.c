@@ -27,8 +27,6 @@ int main(int argc, char *argv[])
 			write(STDOUT_FILENO, "$ ", 2);
 		eRet = yoinkline(&line, stdin);
 		hist++;
-		if (eRet == -2)
-			break;
 		if (eRet == -1)
 			continue;
 		command = get_input(line);

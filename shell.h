@@ -74,7 +74,6 @@ int substrLen(char *str, char *delims);
 void free_tokens(char **tokens);
 void free_path(char **paths);
 void free_env(void);
-void free_argArr(char **argArr, char **front);
 void free_alias_list(alias_t *head);
 
 /* defined in help_fun.c */
