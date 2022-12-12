@@ -57,7 +57,7 @@ ssize_t yoinkline(char **line, FILE *inbound)
 			free_path(pathArr);
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			exit(EXIT_SUCCESS);
+			exit(ret_val);
 		}
 		if (readRet == 0 && inCount > 0)
 		{
