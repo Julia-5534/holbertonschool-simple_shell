@@ -37,10 +37,18 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		thePath = check_paths(command[0]);
-		if (!(thePath) || access((thePath), X_OK) != 0)
+		if (access(thePath, X_OK) != 0)
 		{
-			ret_val = 127;
-			errorHand(hist, command[0], pName);
+			if (access((thePath), F_OK) == 0)
+			{
+				ret_val = 126;
+				perror(pName);
+			}
+			else
+			{
+				ret_val = 127;
+				errorHand(hist, command[0], pName);
+			}
 			free_tokens(command);
 			continue;
 		}

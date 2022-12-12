@@ -73,5 +73,5 @@ char *check_paths(char *command)
 			free(cmpPath);
 		}
 	}
-	return (NULL);
+	return (command);
 }
