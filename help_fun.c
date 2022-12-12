@@ -39,7 +39,10 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	else
 	{
 		free_path(pathArr);
+		perror(pName);
 		exit(EXIT_FAILURE);
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "\n", 1);
 	}
 	inCount = 0;
 	buff = malloc(sizeof(char) * 151);
@@ -50,6 +53,8 @@ ssize_t yoinkline(char **line, FILE *inbound)
 		{
 			free(buff);
 			free_path(pathArr);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
 		}
 		if (readRet == 0 && inCount > 0)
@@ -60,7 +65,10 @@ ssize_t yoinkline(char **line, FILE *inbound)
 		buff[inCount] = c;
 		inCount++;
 	}
-	buff[inCount - 1] = '\0';
+	if (readRet != 0)
+		buff[inCount - 1] = '\0';
+	else
+		buff[inCount] = '\0';
 	inCount = 0;
 	if (!buff[0])
 	{
