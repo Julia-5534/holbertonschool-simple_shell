@@ -36,7 +36,7 @@ int hey_exit(char **command)
 {
 	free_tokens(command);
 	free_path(pathArr);
-	exit(EXIT_SUCCESS);
+	exit(ret_val);
 }
 
 /**

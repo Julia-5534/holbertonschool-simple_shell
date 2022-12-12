@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 			free_tokens(command);
 			continue;
 		}
-		forktime(command, thePath);
+		ret_val = forktime(command, thePath);
 	}
-	return (ret_val);
+	return (0);
 }
