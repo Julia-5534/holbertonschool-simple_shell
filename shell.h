@@ -102,7 +102,6 @@ int hey_env(char **command);
 int main(int argc, char *argv[]);
 
 /* defined in env_setenv_unsetenv_getenv.c */
-int hey_setenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);
 int hey_unsetenv(char **command, char **pathArr, char **envp);
 char **_getenv(char *var);
 

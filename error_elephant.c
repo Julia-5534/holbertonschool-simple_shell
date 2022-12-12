@@ -4,7 +4,7 @@ void errorHand(int eNum, char *arg, char *pName);
 
 /**
  * errorHand - handles errors
- * @eNum: error number
+ * @lNum: historic line num
  * @arg: error arg
  * @pName: program name
  * Return: void, prints error to SE
@@ -19,9 +19,11 @@ void errorHand(int lNum, char *arg, char *pName)
 	char *errMsg3 = ": Permission denied\n";
 
 	if (ret_val == 127)
-		eLen = (_strlen(pName) + _strlen(errMsg2) + _strlen(arg) + (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
+		eLen = (_strlen(pName) + _strlen(errMsg2) + _strlen(arg)
+		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
 	else if (ret_val == 126)
-		eLen = (_strlen(pName) + _strlen(errMsg3) + _strlen(arg) + (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
+		eLen = (_strlen(pName) + _strlen(errMsg3) + _strlen(arg)
+		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
 	errComposite = malloc(sizeof(char) * eLen);
 	_strcpy(errComposite, pName);
 	_strcat(errComposite, errMsg0);

@@ -7,7 +7,7 @@ char *check_paths(char *command);
 
 /**
  * path_locate - yoinks path from env
- * @envvars: env var array in
+ * @envvar: env var array in
  * Return: array of path strs
  */
 char **path_locate(char *envvar)
@@ -43,7 +43,6 @@ char **path_tok(char *path)
 
 /**
  * check_paths - checks pathArr against command[0]
- * @pathArr: array of paths
  * @command: first tok of command array
  * Return: num of valid path located or NULL if none
  */

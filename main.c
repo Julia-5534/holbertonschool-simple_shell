@@ -9,7 +9,6 @@ char *pName;
  * main - Entry point for ghost
  * @argc: arg count
  * @argv: array of input arg strings
- * @envp: array of inherited environment vars
  * Return: TBD
  */
 int main(int argc, char *argv[])
