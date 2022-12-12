@@ -29,7 +29,12 @@ int main(int argc, char *argv[])
 		if (getline(&line, &llen, stdin) < 0)
 		{
 			free(line);
+			free_path(pathArr);
 			exit(EXIT_SUCCESS);
+		}
+		if (_strlen(line) == 1)
+		{
+			continue;
 		}
 		cleanstr(line);
 		hist++;
