@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
 		if (yoinkline(&line, stdin) == -1)
 			continue;
 		command = get_input(line);
+		if (!command[0])
+			continue;
 		if (runBuiltIn(command) >= 0)
 			continue;
 		thePath = check_paths(command[0]);
