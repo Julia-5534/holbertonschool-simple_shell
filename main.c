@@ -14,9 +14,11 @@ char *pName;
  */
 int main(int argc, char *argv[])
 {
-	int retVal;
+	int retVal, stat1;
 	char *line = NULL, *thePath = NULL, **command;
 	size_t llen;
+	struct stat s;
+	pid_t child_pid;
 
 	pName = argv[0];
 	if (argc != 1)
@@ -39,6 +41,28 @@ int main(int argc, char *argv[])
 		cleanstr(line);
 		hist++;
 		command = get_input(line);
+		if (ret_val == 0)
+		{
+			if (stat(line, &s) == 0)
+			{
+				child_pid = fork();
+				if (child_pid == 0)
+				{
+					execve(command[0], command, NULL);
+				}
+				else
+				{
+					waitpid(child_pid, &stat1, WUNTRACED);
+				}
+			}
+			else
+			{
+				perror(pName);
+			}
+			free_tokens(command);
+		}
+		else
+		{
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
@@ -53,6 +77,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		forktime(command, thePath);
+		}
 	}
 	return (ret_val);
 }
