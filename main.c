@@ -14,8 +14,8 @@ char *pName;
  */
 int main(int argc, char *argv[])
 {
-	int retVal, tokenNum, i = 0;
-	char *line = NULL, *thePath = NULL, **command = NULL, *token = NULL, *holdstr = NULL;
+	int retVal;
+	char *line = NULL, *thePath = NULL, **command = NULL;
 
 	pName = argv[0];
 	if (argc != 1)
@@ -28,23 +28,7 @@ int main(int argc, char *argv[])
 			write(STDOUT_FILENO, "$ ", 2);
 		if (yoinkline(&line, stdin) == -1)
 			continue;
-		/*
 		command = get_input(line);
-		*/
-		tokenNum = tok_num(line, " ");
-		command = malloc(sizeof(char *) * (tokenNum + 1));
-		holdstr = dupstr(line);
-		free(line);
-		token = strtok(holdstr, " \t");
-		while (token)
-		{
-			command[i] = dupstr(token);
-			i++;
-			token = strtok(NULL, " ");
-		}
-		command[i] = NULL;
-		i = 0;
-		free(holdstr);
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
