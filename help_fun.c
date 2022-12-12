@@ -103,7 +103,7 @@ void *ampbuff(void *buff, int olds, int news)
 		ch[i] = *data++;
 	}
 	free(buff);
-	return(new);
+	return (new);
 }
 
 /**

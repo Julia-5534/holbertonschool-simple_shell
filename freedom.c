@@ -52,21 +52,17 @@ void free_env(void)
 }
 
 /**
- * free_alias_list - Frees a alias_t linked list.
- * @head: The head of the alias_t list.
+ * free_exit - frees vars in prep for exit
+ * @line: input line
+ * Return: void
  */
-void free_alias_list(alias_t *head)
+void free_exit(char *line)
 {
-	alias_t *next;
-
-	while (head)
-	{
-		next = head->next;
-		free(head->name);
-		free(head->value);
-		free(head);
-		head = next;
-	}
+	free(line);
+	free_path(pathArr);
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	exit(ret_val);
 }
 
 /**
