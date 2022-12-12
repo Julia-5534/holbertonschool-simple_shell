@@ -58,17 +58,10 @@ unsigned int _strspn(char *s, char *accept)
 }
 
 /**
-<<<<<<< HEAD
- * cleanstr - cleans up strings
- * @line: to clean
- * Return: 0
-*/
-=======
  * cleanstr - cleans newline from line
  * @line: string to purge of evil ns
  * Return: always 0
  */
->>>>>>> 41480a0491b1822a8b9f339378ebed25b6679786
 int cleanstr(char *line)
 {
 	int i = 0;
