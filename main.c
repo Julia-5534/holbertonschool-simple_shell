@@ -14,7 +14,7 @@ char *pName;
  */
 int main(int argc, char *argv[])
 {
-	int retVal, eRet = 0;
+	int retVal;
 	char *line = NULL, *thePath = NULL, **command;
 
 	pName = argv[0];
@@ -25,12 +25,10 @@ int main(int argc, char *argv[])
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		eRet = yoinkline(&line, stdin);
-		hist++;
-		if (eRet == -1)
+		if (yoinkline(&line, stdin) == -1)
 			continue;
+		hist++;
 		command = get_input(line);
-		free(line);
 		retVal = runBuiltIn(command);
 		if (retVal >= 0)
 		{
@@ -50,37 +48,4 @@ int main(int argc, char *argv[])
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
 	return (ret_val);
-}
-
-/**
- * forktime - function to fork and exec command(s)
- * @command: string array containing command and args
- * @thePath: sanitized path ready to spawn bbs
- * Return: always zero (0) success
- */
-int forktime(char **command, char *thePath)
-{
-	pid_t child_pid;
-	int stat1;
-
-	switch(child_pid = fork())
-	{
-		case 0:
-		{
-			execve(thePath, command, environ);
-			perror(pName);
-			exit(EXIT_FAILURE);
-		}
-		case -1:
-		{
-			perror(pName);
-			exit(EXIT_FAILURE);
-		}
-		default:
-		waitpid(child_pid, &stat1, WUNTRACED);
-	}
-	if (_strcmp(thePath, command[0]) != 0)
-		free(thePath);
-	free_tokens(command);
-	return (0);
 }

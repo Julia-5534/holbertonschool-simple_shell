@@ -62,9 +62,6 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 
-/* defined in string_support_2.c */
-unsigned int _strspn(char *s, char *accept);
-
 /* defined in tokenizer.c */
 int tok_num(char *str, char *delims);
 char **tokstr(char *line, char *delims);
@@ -81,6 +78,7 @@ char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);
 int num_len(int num);
 char *_itoa(int num);
+int forktime(char **command, char *thePath);
 
 /* defined in moar_strstuff.c */
 int _strncmp(char *s1, char *s2, int n);
@@ -100,7 +98,6 @@ int hey_exit(char **command);
 int hey_env(char **command);
 
 /* defined in main.c */
-int forktime(char **command, char *thePath);
 
 /* defined in env_setenv_unsetenv_getenv.c */
 int hey_setenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);

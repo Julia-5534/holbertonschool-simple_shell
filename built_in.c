@@ -52,7 +52,6 @@ int hey_env(char **command)
 	{
 		return (-1);
 	}
-	if (command)
 	for (i = 0; environ[i]; i++)
 	{
 		for (j = 0; environ[i][j]; j++)
@@ -61,5 +60,6 @@ int hey_env(char **command)
 		}
 		write(STDOUT_FILENO, "\n", 1);
 	}
+	(void)command;
 	return (0);
 }

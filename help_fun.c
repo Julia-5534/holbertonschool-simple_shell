@@ -4,6 +4,7 @@ char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);
 int num_len(int num);
 char *_itoa(int num);
+int forktime(char **command, char *thePath);
 
 /**
  * get_input - supplies approp. delims for command array
@@ -16,6 +17,7 @@ char **get_input(char *input)
 	char *separator = " \t";
 
 	command = tokstr(input, separator);
+	free(input);
 	return (command);
 }
 
@@ -142,4 +144,37 @@ char *_itoa(int num)
 	} while (num1 > 0);
 
 	return (buffer);
+}
+
+/**
+ * forktime - function to fork and exec command(s)
+ * @command: string array containing command and args
+ * @thePath: sanitized path ready to spawn bbs
+ * Return: always zero (0) success
+ */
+int forktime(char **command, char *thePath)
+{
+	pid_t child_pid;
+	int stat1;
+
+	switch(child_pid = fork())
+	{
+		case 0:
+		{
+			execve(thePath, command, environ);
+			perror(pName);
+			exit(EXIT_FAILURE);
+		}
+		case -1:
+		{
+			perror(pName);
+			exit(EXIT_FAILURE);
+		}
+		default:
+		waitpid(child_pid, &stat1, WUNTRACED);
+	}
+	if (_strcmp(thePath, command[0]) != 0)
+		free(thePath);
+	free_tokens(command);
+	return (0);
 }
