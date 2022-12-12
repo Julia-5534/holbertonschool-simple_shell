@@ -17,7 +17,8 @@
 #include <errno.h>
 
 /* global */
-int hist;
+extern int hist;
+extern int ret_val;
 extern char *pName;
 extern char **pathArr;
 extern char **environ;
@@ -89,20 +90,17 @@ unsigned int _strspn(char *s, char *accept);
 /* defined in pathfinder.c */
 char **path_locate(char *envvar);
 char **path_tok(char *path);
-void print_paths(char **pathArr);
 char *check_paths(char *command);
 
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
-
-/* defined in enviro.c */
-char *enviro(char *envar);
 
 /* defined in built_in.c */
 int runBuiltIn(char **command);
 int hey_exit(char **command);
 int hey_env(char **command);
 
+/* defined in main.c */
 int forktime(char **command, char *thePath);
 
 /* defined in env_setenv_unsetenv_getenv.c */

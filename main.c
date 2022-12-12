@@ -1,6 +1,7 @@
 #include "shell.h"
 
 char **pathArr;
+int ret_val = 0;
 int hist = 0;
 char *pName;
 
@@ -13,7 +14,7 @@ char *pName;
  */
 int main(int argc, char *argv[])
 {
-	int retVal, fRet = 0, eRet = 0;
+	int retVal, eRet = 0;
 	char *line = NULL, *thePath = NULL, **command;
 
 	pName = argv[0];
@@ -45,18 +46,24 @@ int main(int argc, char *argv[])
 			free_tokens(command);
 			continue;
 		}
-		fRet = forktime(command, thePath);
+		forktime(command, thePath);
 	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free_path(pathArr);
-	return (fRet);
+	return (ret_val);
 }
 
+/**
+ * forktime - function to fork and exec command(s)
+ * @command: string array containing command and args
+ * @thePath: sanitized path ready to spawn bbs
+ * Return: always zero (0) success
+ */
 int forktime(char **command, char *thePath)
 {
 	pid_t child_pid;
-	int stat1, eRet = 0;
+	int stat1;
 
 	switch(child_pid = fork())
 	{
@@ -77,5 +84,5 @@ int forktime(char **command, char *thePath)
 	if (_strcmp(thePath, command[0]) != 0)
 		free(thePath);
 	free_tokens(command);
-	return (eRet);
+	return (0);
 }
