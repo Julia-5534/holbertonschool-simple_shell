@@ -83,6 +83,7 @@ int forktime(char **command, char *thePath);
 /* defined in moar_strstuff.c */
 int _strncmp(char *s1, char *s2, int n);
 unsigned int _strspn(char *s, char *accept);
+int cleanstr(char *line);
 
 /* defined in pathfinder.c */
 char **path_locate(char *envvar);

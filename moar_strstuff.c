@@ -2,6 +2,7 @@
 
 int _strncmp(char *s1, char *s2, int n);
 unsigned int _strspn(char *s, char *accept);
+int cleanstr(char *line);
 
 /**
  * _strncmp - compares strings up to n chars
@@ -55,4 +56,19 @@ unsigned int _strspn(char *s, char *accept)
 		i++;
 	}
 	return (bCount);
+}
+
+int cleanstr(char *line)
+{
+	int i = 0;
+
+	while (line[i])
+	{
+		if (line[i] == '\n')
+		{
+			line[i] = '\0';
+		}
+		i++;
+	}
+	return (0);
 }

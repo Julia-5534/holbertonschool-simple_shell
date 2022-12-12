@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 {
 	int retVal;
 	char *line = NULL, *thePath = NULL, **command;
+	size_t llen;
 
 	pName = argv[0];
 	if (argc != 1)
@@ -25,8 +26,12 @@ int main(int argc, char *argv[])
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		if (yoinkline(&line, stdin) == -1)
-			continue;
+		if (getline(&line, &llen, stdin) < 0)
+		{
+			free(line);
+			exit(EXIT_SUCCESS);
+		}
+		cleanstr(line);
 		hist++;
 		command = get_input(line);
 		retVal = runBuiltIn(command);
