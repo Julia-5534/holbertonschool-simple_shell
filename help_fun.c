@@ -17,6 +17,7 @@ char **get_input(char *input)
 	char *separator = " \t";
 
 	command = tokstr(input, separator);
+	free(input);
 	return (command);
 }
 

@@ -53,6 +53,10 @@ char *check_paths(char *command)
 	struct stat s;
 	char *cmpPath = NULL;
 
+	if (stat(command, &s) == 0)
+	{
+		return (command);
+	}
 	if (command[0] != '/' && command[0] != '.')
 	{
 		for (; pathArr[i]; i++)
@@ -68,10 +72,6 @@ char *check_paths(char *command)
 			}
 			free(cmpPath);
 		}
-	}
-	if (stat(command, &s) == 0)
-	{
-		return (command);
 	}
 	return (NULL);
 }
