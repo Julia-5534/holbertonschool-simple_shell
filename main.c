@@ -14,6 +14,7 @@ char *pName;
 int main(int argc, char *argv[])
 {
 	char *line = NULL, *thePath = NULL, **command = NULL;
+	size_t llen;
 
 	signal(SIGINT, sig_stop);
 	pName = argv[0];
@@ -25,11 +26,20 @@ int main(int argc, char *argv[])
 		hist++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		if (yoinkline(&line, stdin) == -1)
+		if (getline(&line, &llen, stdin) < 0)
+		{
+			free(line);
+			free_path(pathArr);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			exit(ret_val);
+		}
+		cleanstr(line);
+		if (tok_num(line, " ") <= 0)
+		{
 			continue;
+		}
 		command = get_input(line);
-		if (!command[0])
-			continue;
 		if (runBuiltIn(command) >= 0)
 			continue;
 		thePath = check_paths(command[0]);

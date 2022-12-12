@@ -2,7 +2,6 @@
 
 char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);
-int num_len(int num);
 char *_itoa(int num);
 int forktime(char **command, char *thePath);
 
@@ -17,7 +16,6 @@ char **get_input(char *input)
 	char *separator = " \t";
 
 	command = tokstr(input, separator);
-	free(input);
 	return (command);
 }
 
@@ -51,6 +49,10 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	while (c != '\n')
 	{
 		readRet = read(STDIN_FILENO, &c, 1);
+		if (inCount > 150)
+		{
+			line = ampbuff(line, inCount, inCount + 1);
+		}
 		if ((readRet == 0 && inCount == 0) || readRet == -1)
 		{
 			free(buff);
@@ -82,31 +84,26 @@ ssize_t yoinkline(char **line, FILE *inbound)
 }
 
 /**
- * num_len - Counts the digit length of a number.
- * @num: The number to measure.
- * Return: The digit length.
+ * ampbuff - increases buffer size
+ * @buff: pointer to buff
+ * @olds: old size
+ * @news: new size
+ * Return: always 0
  */
-int num_len(int num)
+void *ampbuff(void *buff, int olds, int news)
 {
-	unsigned int num1;
-	int len = 1;
+	int i;
+	char *data = buff, *ch;
+	void *new;
 
-	if (num < 0)
+	new = malloc(sizeof(*data) * news);
+	ch = new;
+	for (i = 0; i < (news - olds); i++)
 	{
-		len++;
-		num1 = num * -1;
+		ch[i] = *data++;
 	}
-	else
-	{
-		num1 = num;
-	}
-	while (num1 > 9)
-	{
-		len++;
-		num1 /= 10;
-	}
-
-	return (len);
+	free(buff);
+	return(new);
 }
 
 /**

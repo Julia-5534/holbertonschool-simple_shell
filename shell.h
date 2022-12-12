@@ -77,13 +77,14 @@ void sig_stop(int sNum);
 /* defined in help_fun.c */
 char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);
-int num_len(int num);
+void *ampbuff(void *buff, int olds, int news);
 char *_itoa(int num);
 int forktime(char **command, char *thePath);
 
 /* defined in moar_strstuff.c */
 int _strncmp(char *s1, char *s2, int n);
 unsigned int _strspn(char *s, char *accept);
+int cleanstr(char *line);
 
 /* defined in pathfinder.c */
 char **path_locate(char *envvar);
@@ -92,6 +93,7 @@ char *check_paths(char *command);
 
 /* defined in error_elephant.c */
 void errorHand(int eNum, char *arg, char *pName);
+int num_len(int num);
 
 /* defined in built_in.c */
 int runBuiltIn(char **command);

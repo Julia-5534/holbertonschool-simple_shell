@@ -56,3 +56,18 @@ unsigned int _strspn(char *s, char *accept)
 	}
 	return (bCount);
 }
+
+int cleanstr(char *line)
+{
+	int i = 0;
+
+	while (line[i])
+	{
+		if (line[i] == '\n')
+		{
+			line[i] = '\0';
+		}
+		i++;
+	}
+	return (0);
+}
