@@ -1,1 +1,80 @@
-Man we need one simple shell
+.TH SIMPLE_SHELL "11" "December 2022" "simple_shell Manual"
+
+.SH NAME
+.B simple_shell \- A Simple Shell Holberton Project
+
+.SH SYNOPSIS
+.B ./hsh
+This shell is a mini-mimic of /bin/sh in terms of functionality. It works in both interactive and non-interactive mode.
+.PP
+
+.SH OVERVIEW
+simple_shell accepts, interprets, and executes commands from files and the command line.
+
+.SH Description
+This shell functions as a very simplified UNIX command line interpreter. This shell displays a prompt ($ ) and waits for the user to type a command. Commands always end with a new line. The prompt will be displayed again each time a command has been executed. The command lines will be simple, with no advanced features. If an executable cannot be found, an error message will print and a prompt will display.
+This shell will handle errors, the "end of file" condition Ctrl+D, as well as,
+
+.SH INVOCATION
+.I interactive
+simple shell can be invoked by typing ./hsh. Meanwhile, a
+.I non-interactive
+simple shell can also be invoked via a pipe (e.g. echo "/bin/ls" | ./hsh).
+
+.SS Sample Functions
+.sp
+echo
+.I [arguments]
+      prints to standard output the argument(s) given and prints a newline
+.sp
+ls
+.I [[flags]...[arguments]]
+      lists files in the current directory according to the flags given by user
+.sp
+pwd
+      prints working directories
+.SH BUILTINS
+.sp
+cd
+      changes directory and updates environmental variables OLDPWD and PWD
+.sp
+env
+      prints environmental variables
+.sp
+exit
+      exits out of simple shell and returns to user's original shell
+.sp
+setenv
+      creates non-existing or modifies existing environmental variable within shell session
+.sp
+unsetenv
+      removes existing environmental variable within shell session
+
+.PP
+.SH EXIT STATUS
+.P
+.RS
+The following exit values shall be returned:
+
+           0   The script to be executed consisted solely of zero or
+               more blank lines or comments, or both.
+
+       1‐125   A non-interactive shell detected an error other than
+               command_file not found or executable, including but not
+               limited to syntax, redirection, or variable assignment
+               errors.
+
+         126   A specified command_file could not be executed due to an
+               [ENOEXEC] error (see Section 2.9.1.1, Command Search and.
+
+         127   A specified command_file could not be found by a non-
+               interactive shell.
+
+       Otherwise, the shell shall return the exit status of the last
+       command it invoked or attempted to invoke.
+
+.SH BUGS
+None, though there is much less functionality than a standard shell.
+.SH AUTHORS
+Julia Bullard <5534@holbertonschool.com>
+Chris Stamper <5580@holbertonschool.com>

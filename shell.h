@@ -98,6 +98,7 @@ int hey_exit(char **command);
 int hey_env(char **command);
 
 /* defined in main.c */
+int main(int argc, char *argv[]);
 
 /* defined in env_setenv_unsetenv_getenv.c */
 int hey_setenv(char **args, char **__attribute__((__unused__)), char __attribute__((__unused__)) **front);
