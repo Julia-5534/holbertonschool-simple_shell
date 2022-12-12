@@ -57,7 +57,7 @@ ssize_t yoinkline(char **line, FILE *inbound)
 			free_path(pathArr);
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			exit(EXIT_SUCCESS);
+			exit(ret_val);
 		}
 		if (readRet == 0 && inCount > 0)
 		{
@@ -179,10 +179,16 @@ int forktime(char **command, char *thePath)
 			exit(EXIT_FAILURE);
 		}
 		default:
-		waitpid(child_pid, &stat1, WUNTRACED);
+		{
+			waitpid(child_pid, &stat1, WUNTRACED);
+			if (WIFEXITED(stat1))
+			{
+				exRet = WEXITSTATUS(stat1);
+			}
+		}
 	}
 	if (_strcmp(thePath, command[0]) != 0)
 		free(thePath);
 	free_tokens(command);
-	return (0);
+	return (exRet);
 }

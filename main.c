@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
 	pathArr = path_locate("PATH");
 	while (1)
 	{
+		hist++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		if (yoinkline(&line, stdin) == -1)
 			continue;
-		hist++;
 		/*
 		command = get_input(line);
 		*/
@@ -54,11 +54,12 @@ int main(int argc, char *argv[])
 		thePath = check_paths(command[0]);
 		if (!(thePath) || access((thePath), X_OK) != 0)
 		{
-			perror(pName);
+			ret_val = 127;
+			errorHand(hist, command[0], pName);
 			free_tokens(command);
 			continue;
 		}
-		forktime(command, thePath);
+		ret_val = forktime(command, thePath);
 	}
-	return (ret_val);
+	return (0);
 }
