@@ -40,8 +40,26 @@ int hey_exit(char **command)
 	exit(ret_val);
 }
 
-/**
- * hey_env - built in function to print local env
- * Return: status
+ /** hey_env - built in function to print local env
+ * @command: array of strings containing command and args
+ * Return: -1 on bad magic 0 otherwise
  */
 int hey_env(char **command)
+{
+	int i, j;
+
+	if (!(environ))
+	{
+		return (-1);
+	}
+	if (command)
+	for (i = 0; environ[i]; i++)
+	{
+		for (j = 0; environ[i][j]; j++)
+		{
+			write(STDOUT_FILENO, &environ[i][j], 1);
+		}
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	return (0);
+}
