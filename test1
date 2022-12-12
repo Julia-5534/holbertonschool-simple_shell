@@ -1,2 +1,8 @@
 /usr/bin/ls
-/usr/bin/ls
+ls
+
+blarg
+ls -UWU
+
+ls
+pwd
