@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	int retVal;
 	char *line = NULL, *thePath = NULL, **command = NULL;
 
+	signal(SIGINT, sig_stop);
 	pName = argv[0];
 	if (argc != 1)
 		exit(EXIT_FAILURE);

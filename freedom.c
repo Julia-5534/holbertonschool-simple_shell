@@ -4,6 +4,7 @@ void free_tokens(char **tokens);
 void free_path(char **paths);
 void free_env(void);
 void free_alias_list(alias_t *head);
+void sig_stop(int sNum);
 
 /**
  * free_tokens - frees mem assoc w indv strs in strarr
@@ -66,4 +67,21 @@ void free_alias_list(alias_t *head)
 		free(head);
 		head = next;
 	}
+}
+
+/**
+ * sig_stop - stops signal
+ * @sNum: signal number
+ * Return: void
+ */
+void sig_stop(int sNum)
+{
+	char *sadness = "\nWhat is dead may never die...";
+
+	if (sNum)
+	{
+		/* placeholder */
+	}
+	write(STDOUT_FILENO, sadness, _strlen(sadness));
+	write(STDOUT_FILENO, "\n$ ", 3);
 }

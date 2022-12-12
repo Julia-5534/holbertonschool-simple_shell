@@ -72,6 +72,7 @@ void free_tokens(char **tokens);
 void free_path(char **paths);
 void free_env(void);
 void free_alias_list(alias_t *head);
+void sig_stop(int sNum);
 
 /* defined in help_fun.c */
 char **get_input(char *input);
