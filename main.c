@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		command = get_input(line);
-		if (runBuiltIn(command) >= 0)
+		if (runBuiltIn(command, line) >= 0)
 			continue;
 		thePath = check_paths(command[0]);
 		if (access(thePath, X_OK) != 0)

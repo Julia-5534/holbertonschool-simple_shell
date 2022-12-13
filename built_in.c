@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int runBuiltIn(char **command);
+int runBuiltIn(char **command, char *line);
 int hey_exit(char **command);
 int hey_env(char **command);
 
@@ -9,7 +9,7 @@ int hey_env(char **command);
  * @command: array of strings containing command and args
  * Return: -1 if command isn't built in, else index num of built in
  */
-int runBuiltIn(char **command)
+int runBuiltIn(char **command, char *line)
 {
 	builtIn_t betty[] = {
 		{ "exit", hey_exit },
@@ -23,9 +23,11 @@ int runBuiltIn(char **command)
 		if (_strcmp(betty[i].fun, command[0]) == 0 &&
 		_strlen(command[0]) == _strlen(betty[i].fun))
 		{
+			if (i == 0)
+				free(line);
 			betty[i].f(command);
-			ret_val = 0;
 			free_tokens(command);
+			ret_val = 0;
 			return (i);
 		}
 	}
@@ -39,8 +41,10 @@ int runBuiltIn(char **command)
  */
 int hey_exit(char **command)
 {
-	free_tokens(command);
 	free_path(pathArr);
+	free_tokens(command);
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
 	exit(ret_val);
 }
 
