@@ -36,11 +36,11 @@ Install and Compile
 (your_terminal)$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 Non-Interactive Mode
 
-echo "ls -l" | ./simple_shell
+echo "ls -l" | ./hsh
 
 Interactive Mode* Activate the shell
 
-(your_terminal)$ ./simple_shell
+(your_terminal)$ ./hsh
 $
 Sample Usage
 
