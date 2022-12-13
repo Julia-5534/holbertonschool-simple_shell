@@ -2,6 +2,7 @@
 
 char **get_input(char *input);
 ssize_t yoinkline(char **line, FILE *inbound);
+int num_len(int num);
 char *_itoa(int num);
 int forktime(char **command, char *thePath);
 
@@ -16,6 +17,7 @@ char **get_input(char *input)
 	char *separator = " \t";
 
 	command = tokstr(input, separator);
+	free(input);
 	return (command);
 }
 
@@ -49,10 +51,6 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	while (c != '\n')
 	{
 		readRet = read(STDIN_FILENO, &c, 1);
-		if (inCount > 150)
-		{
-			line = ampbuff(line, inCount, inCount + 1);
-		}
 		if ((readRet == 0 && inCount == 0) || readRet == -1)
 		{
 			free(buff);
@@ -84,26 +82,36 @@ ssize_t yoinkline(char **line, FILE *inbound)
 }
 
 /**
- * ampbuff - increases buffer size
- * @buff: pointer to buff
- * @olds: old size
- * @news: new size
- * Return: always 0
+ * num_len - Counts the digit length of a number.
+ * @num: The number to measure.
+ * Return: The digit length.
  */
-void *ampbuff(void *buff, int olds, int news)
+int num_len(int num)
 {
-	int i;
-	char *data = buff, *ch;
-	void *new;
+	unsigned int num1;
+	int len = 1;
 
-	new = malloc(sizeof(*data) * news);
-	ch = new;
-	for (i = 0; i < (news - olds); i++)
+	if (num < 0)
 	{
-		ch[i] = *data++;
+		len++;
+		num1 = num * -1;
 	}
+<<<<<<< HEAD
+	else
+	{
+		num1 = num;
+	}
+	while (num1 > 9)
+	{
+		len++;
+		num1 /= 10;
+	}
+
+	return (len);
+=======
 	free(buff);
-	return (new);
+	return(new);
+>>>>>>> parent of 41480a0... betty style fixes
 }
 
 /**
@@ -154,7 +162,7 @@ int forktime(char **command, char *thePath)
 	pid_t child_pid;
 	int stat1, exRet;
 
-	switch (child_pid = fork())
+	switch(child_pid = fork())
 	{
 		case 0:
 		{
