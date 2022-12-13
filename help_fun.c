@@ -17,7 +17,6 @@ char **get_input(char *input)
 	char *separator = " \t";
 
 	command = tokstr(input, separator);
-	free(input);
 	return (command);
 }
 
@@ -79,39 +78,6 @@ ssize_t yoinkline(char **line, FILE *inbound)
 	}
 	*line = buff;
 	return (0);
-}
-
-/**
- * num_len - Counts the digit length of a number.
- * @num: The number to measure.
- * Return: The digit length.
- */
-int num_len(int num)
-{
-	unsigned int num1;
-	int len = 1;
-
-	if (num < 0)
-	{
-		len++;
-		num1 = num * -1;
-	}
-<<<<<<< HEAD
-	else
-	{
-		num1 = num;
-	}
-	while (num1 > 9)
-	{
-		len++;
-		num1 /= 10;
-	}
-
-	return (len);
-=======
-	free(buff);
-	return(new);
->>>>>>> parent of 41480a0... betty style fixes
 }
 
 /**

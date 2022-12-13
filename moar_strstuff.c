@@ -56,8 +56,6 @@ unsigned int _strspn(char *s, char *accept)
 	}
 	return (bCount);
 }
-<<<<<<< HEAD
-=======
 
 int cleanstr(char *line)
 {
@@ -73,4 +71,3 @@ int cleanstr(char *line)
 	}
 	return (0);
 }
->>>>>>> parent of 41480a0... betty style fixes
