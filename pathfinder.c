@@ -51,7 +51,6 @@ char *check_paths(char *command)
 	unsigned int i = 0, pathLen = 0;
 	struct stat s;
 	char *cmpPath = NULL;
-	extern char **pathArr;
 
 	if (stat(command, &s) == 0)
 	{

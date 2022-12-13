@@ -75,13 +75,3 @@ void sig_stop(int sNum)
 	(void)sNum;
 	write(STDOUT_FILENO, "\n$ ", 3);
 }
-/**
- * void sig_stop(int sNum)
-{
-	char *new_prompt = "\n$ ";
-
-	(void)sNum;
-	signal(SIGINT, sig_stop);
-	write(STDIN_FILENO, new_prompt, 3);
-}
-*/

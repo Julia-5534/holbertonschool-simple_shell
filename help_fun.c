@@ -128,7 +128,7 @@ int forktime(char **command, char *thePath)
 	pid_t child_pid;
 	int stat1, exRet;
 
-	switch(child_pid = fork())
+	switch (child_pid = fork())
 	{
 		case 0:
 		{
