@@ -1,10 +1,5 @@
 #include "shell.h"
 
-char **pathArr;
-int ret_val = 0;
-int hist = 0;
-char *pName;
-
 /**
  * main - Entry point for ghost
  * @argc: arg count
@@ -16,6 +11,12 @@ int main(int argc, char *argv[])
 {
 	int retVal;
 	char *line = NULL, *thePath = NULL, **command = NULL;
+<<<<<<< HEAD
+=======
+	size_t llen;
+	char **pathArr;
+	int ret_val, hist = 0;
+>>>>>>> 429403bd45c820adffb176a1cfae3de1d564dc99
 
 	signal(SIGINT, sig_stop);
 	pName = argv[0];
