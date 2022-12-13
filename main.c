@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
 {
 	char *line = NULL, *thePath = NULL, **command = NULL;
 	size_t llen;
+	char **pathArr;
+	int ret_val, hist = 0;
 
 	signal(SIGINT, sig_stop);
 	pName = argv[0];
