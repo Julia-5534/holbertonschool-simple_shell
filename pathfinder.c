@@ -56,7 +56,7 @@ char *check_paths(char *command)
 	{
 		return (command);
 	}
-	pathArr = path_locate("PATH");
+	pathArr = path_locate("PATH=");
 	if (command[0] != '/' && command[0] != '.')
 	{
 		for (; pathArr[i]; i++)
