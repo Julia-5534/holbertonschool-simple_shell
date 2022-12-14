@@ -33,6 +33,8 @@ void free_path(char **paths)
 
 	if (!paths)
 		return;
+	if (!(*paths))
+		return;
 	paths[0] -= 5;
 	for (; paths[i] != NULL; i++)
 	{
