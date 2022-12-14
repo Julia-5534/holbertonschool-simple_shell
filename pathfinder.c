@@ -52,11 +52,11 @@ char *check_paths(char *command)
 	struct stat s;
 	char *cmpPath = NULL;
 
-	pathArr = path_locate("PATH");
 	if (stat(command, &s) == 0)
 	{
 		return (command);
 	}
+	pathArr = path_locate("PATH");
 	if (command[0] != '/' && command[0] != '.')
 	{
 		for (; pathArr[i]; i++)
