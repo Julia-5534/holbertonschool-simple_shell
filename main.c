@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 	while (1)
 	{
 		hist++;
-		pathArr = path_locate("PATH");
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&line, &llen, stdin) < 0)
@@ -45,7 +44,6 @@ int main(int argc, char *argv[])
 				ret_val = 127;
 			errorHand(hist, command[0], pName);
 			free_tokens(command);
-			free_path(pathArr);
 			continue;
 		}
 		ret_val = forktime(command, thePath);

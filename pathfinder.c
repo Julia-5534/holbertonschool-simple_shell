@@ -52,6 +52,7 @@ char *check_paths(char *command)
 	struct stat s;
 	char *cmpPath = NULL;
 
+	pathArr = path_locate("PATH");
 	if (stat(command, &s) == 0)
 	{
 		return (command);
@@ -67,10 +68,12 @@ char *check_paths(char *command)
 			_strcat(cmpPath, command);
 			if (stat(cmpPath, &s) == 0)
 			{
+				free_path(pathArr);
 				return (cmpPath);
 			}
 			free(cmpPath);
 		}
 	}
+	free_path(pathArr);
 	return (command);
 }
