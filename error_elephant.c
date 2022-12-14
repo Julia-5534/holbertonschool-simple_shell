@@ -24,7 +24,7 @@ void errorHand(int lNum, char *arg, char *pName)
 	else if (ret_val == 126)
 		eLen = (_strlen(pName) + _strlen(errMsg3) + _strlen(arg)
 		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1));
-	errComposite = malloc(sizeof(char) * eLen);
+	errComposite = malloc(sizeof(char) * eLen + 1);
 	_strcpy(errComposite, pName);
 	_strcat(errComposite, errMsg0);
 	_strcat(errComposite, errMsg1);
