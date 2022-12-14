@@ -161,5 +161,6 @@ int forktime(char **command, char *thePath)
 	if (_strcmp(thePath, command[0]) != 0)
 		free(thePath);
 	free_tokens(command);
+	free_path(pathArr);
 	return (exRet);
 }
