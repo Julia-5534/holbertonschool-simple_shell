@@ -31,6 +31,8 @@ void free_path(char **paths)
 {
 	unsigned int i = 0;
 
+	if (!paths)
+		return;
 	paths[0] -= 5;
 	for (; paths[i] != NULL; i++)
 	{
