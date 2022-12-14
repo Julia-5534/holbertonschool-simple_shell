@@ -7,6 +7,7 @@ int hey_env(char **command);
 /**
  * runBuiltIn - function that runs built in commands
  * @command: array of strings containing command and args
+ * @line: user input line from getline
  * Return: -1 if command isn't built in, else index num of built in
  */
 int runBuiltIn(char **command, char *line)
