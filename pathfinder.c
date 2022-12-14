@@ -15,7 +15,9 @@ char **path_locate(char *envvar)
 	unsigned int i = 0;
 	char **daWay = NULL;
 
-	if (!environ || !(*environ))
+	if (!environ)
+		return (NULL);
+	if (!(*environ))
 		return (NULL);
 	for (; environ[i]; i++)
 	{
