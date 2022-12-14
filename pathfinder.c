@@ -17,7 +17,7 @@ char **path_locate(char *envvar)
 
 	if (!environ)
 		return (NULL);
-	if (!(*environ))
+	if (!(*environ) || !(*environ[i]))
 		return (NULL);
 	for (; environ[i]; i++)
 	{
@@ -63,6 +63,8 @@ char *check_paths(char *command)
 		return (command);
 	}
 	pathArr = path_locate("PATH=");
+	if (!pathArr)
+		return (NULL);
 	if (command[0] != '/' && command[0] != '.')
 	{
 		for (; pathArr[i]; i++)
