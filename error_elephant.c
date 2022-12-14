@@ -20,10 +20,10 @@ void errorHand(int lNum, char *arg, char *pName)
 
 	if (ret_val == 127)
 		eLen = (_strlen(pName) + _strlen(errMsg2) + _strlen(arg)
-		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
+		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1));
 	else if (ret_val == 126)
 		eLen = (_strlen(pName) + _strlen(errMsg3) + _strlen(arg)
-		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1) + 1);
+		+ (_strlen(errMsg0) * 2) + _strlen(errMsg1));
 	errComposite = malloc(sizeof(char) * eLen);
 	_strcpy(errComposite, pName);
 	_strcat(errComposite, errMsg0);
