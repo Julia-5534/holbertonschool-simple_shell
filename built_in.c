@@ -58,7 +58,7 @@ int hey_env(char **command)
 {
 	int i, j;
 
-	if (!(environ))
+	if (!environ || !(*environ))
 	{
 		return (-1);
 	}
