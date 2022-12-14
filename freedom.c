@@ -59,7 +59,6 @@ void free_env(void)
 void free_exit(char *line)
 {
 	free(line);
-	free_path(pathArr);
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	exit(ret_val);
