@@ -23,6 +23,8 @@ char **path_locate(char *envvar)
 	{
 		if (_strncmp(envvar, environ[i], _strlen(envvar)) == 0)
 		{
+			if (environ[i][5] != '=')
+				continue;
 			if (!(environ[i][6]))
 				return (NULL);
 			daWay = path_tok(environ[i]);
