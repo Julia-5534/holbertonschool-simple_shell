@@ -2,7 +2,6 @@
 
 char **path_locate(char *envvar);
 char **path_tok(char *path);
-void print_paths(char **pathArr);
 char *check_paths(char *command);
 
 /**
@@ -17,16 +16,14 @@ char **path_locate(char *envvar)
 
 	if (!environ)
 		return (NULL);
-	if (!(*environ) || !(*environ[i]))
+	if (!(*environ))
+		return (NULL);
+	if (!(**environ))
 		return (NULL);
 	for (; environ[i]; i++)
 	{
 		if (_strncmp(envvar, environ[i], _strlen(envvar)) == 0)
 		{
-			if (environ[i][4] != '=')
-				continue;
-			if (!(environ[i][5]))
-				return (NULL);
 			daWay = path_tok(environ[i]);
 			return (daWay);
 		}
