@@ -29,9 +29,7 @@ int main(int argc, char *argv[])
 			free_exit(line);
 		cleanstr(line);
 		if (tok_num(line, " ") <= 0)
-		{
 			continue;
-		}
 		command = get_input(line);
 		if (runBuiltIn(command, line) >= 0)
 			continue;

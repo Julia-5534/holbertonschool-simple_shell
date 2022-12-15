@@ -42,7 +42,6 @@ int runBuiltIn(char **command, char *line)
  */
 int hey_exit(char **command)
 {
-	free_path(pathArr);
 	free_tokens(command);
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
@@ -58,10 +57,10 @@ int hey_env(char **command)
 {
 	int i, j;
 
-	if (!environ || !(*environ))
-	{
+	if (!environ)
 		return (-1);
-	}
+	if (!(*environ))
+		return (-1);
 	for (i = 0; environ[i]; i++)
 	{
 		for (j = 0; environ[i][j]; j++)

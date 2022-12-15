@@ -1,57 +1,10 @@
 #include "shell.h"
 
 char *_strcat(char *dest, char *src);
-char *dupstr(char *fire);
 char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
-
-/**
- * dupstr - This function duplicates a string (char *fire)
- * and stores it in a newly allocated block of memory. It
- * then returns a pointer to that new memory block.
- *
- * The name is wildly appropriate when you think about it.
- *
- * @fire: pointer to string to duplicate
- *
- * Return: pointer to duplicated string hextek location
- *
- */
-char *dupstr(char *fire)
-{
-	unsigned int i = 0;
-	char *dumpster;
-
-	/* mitigate bad magic */
-	if (!(fire))
-	{
-		return (NULL);
-	}
-
-	/* gets strlen */
-	while (fire[i])
-	{
-		i++;
-	}
-
-	/* find a good location in memory and check */
-	dumpster = malloc(sizeof(char) * (i + 1));
-	if (!(dumpster))
-	{
-		return (NULL);
-	}
-
-	/* copy the string contents */
-	for (i = 0; fire[i]; i++)
-	{
-		dumpster[i] = fire[i];
-	}
-	dumpster[i] = '\0';
-
-	/* return new string loca */
-	return (dumpster);
-}
+int _strncmp(char *s1, char *s2, int n);
+int _strcmp(char *s1, char *s2);
 
 /**
  * *_strcat - meows 2 strings together
@@ -97,6 +50,49 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
+ * _strlen - function to find length of string
+ * @s: string input
+ * Return: string length
+ */
+int _strlen(char *s)
+{
+	int a = 0;
+
+	while (*(s + a) != '\0')
+	{
+		a++;
+	}
+	return (a);
+}
+
+/**
+ * _strncmp - compares strings up to n chars
+ * @s1: first string
+ * @s2: second string
+ * @n: num of chars to compare
+ * Return: first dif or 0 if none
+ */
+int _strncmp(char *s1, char *s2, int n)
+{
+	int i = 0, dif = 0;
+
+	while (s1[i] && s2[i] && (i < n))
+	{
+		if (s1[i] == s2[i])
+		{
+			i++;
+			continue;
+		}
+		else
+		{
+			dif = s1[i] - s2[i];
+			break;
+		}
+	}
+	return (dif);
+}
+
+/**
  * _strcmp - compares strings ASCII values
  * @s1: first string
  * @s2: second string
@@ -120,20 +116,4 @@ int _strcmp(char *s1, char *s2)
 		}
 	}
 	return (dif);
-}
-
-/**
- * _strlen - function to find length of string
- * @s: string input
- * Return: string length
- */
-int _strlen(char *s)
-{
-	int a = 0;
-
-	while (*(s + a) != '\0')
-	{
-		a++;
-	}
-	return (a);
 }

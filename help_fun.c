@@ -1,10 +1,10 @@
 #include "shell.h"
 
 char **get_input(char *input);
-ssize_t yoinkline(char **line, FILE *inbound);
-int num_len(int num);
 char *_itoa(int num);
 int forktime(char **command, char *thePath);
+int cleanstr(char *line);
+int num_len(int num);
 
 /**
  * get_input - supplies approp. delims for command array
@@ -18,66 +18,6 @@ char **get_input(char *input)
 
 	command = tokstr(input, separator);
 	return (command);
-}
-
-/**
- * yoinkline - our version of getline
- * @line: the line to be yoinked
- * @inbound: the inbound file to be yoinked
- * Return: 0 on success -1 if only newline
-*/
-ssize_t yoinkline(char **line, FILE *inbound)
-{
-	static ssize_t inCount;
-	char *buff;
-	char c = 'a';
-	int readRet;
-
-	if (inCount == 0)
-	{
-		fflush(inbound);
-	}
-	else
-	{
-		free_path(pathArr);
-		perror(pName);
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\n", 1);
-		exit(EXIT_FAILURE);
-	}
-	inCount = 0;
-	buff = malloc(sizeof(char) * 151);
-	while (c != '\n')
-	{
-		readRet = read(STDIN_FILENO, &c, 1);
-		if ((readRet == 0 && inCount == 0) || readRet == -1)
-		{
-			free(buff);
-			free_path(pathArr);
-			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);
-			exit(ret_val);
-		}
-		if (readRet == 0 && inCount > 0)
-		{
-			inCount++;
-			break;
-		}
-		buff[inCount] = c;
-		inCount++;
-	}
-	if (readRet != 0)
-		buff[inCount - 1] = '\0';
-	else
-		buff[inCount] = '\0';
-	inCount = 0;
-	if (!buff[0])
-	{
-		free(buff);
-		return (-1);
-	}
-	*line = buff;
-	return (0);
 }
 
 /**
@@ -162,4 +102,52 @@ int forktime(char **command, char *thePath)
 		free(thePath);
 	free_tokens(command);
 	return (exRet);
+}
+
+/**
+ * cleanstr - removes newline chars from user input
+ * @line: user input line
+ * Return: always 0
+ */
+int cleanstr(char *line)
+{
+	int i = 0;
+
+	while (line[i])
+	{
+		if (line[i] == '\n')
+		{
+			line[i] = '\0';
+		}
+		i++;
+	}
+	return (0);
+}
+
+/**
+ * num_len - Counts the digit length of a number.
+ * @num: The number to measure.
+ * Return: The digit length.
+ */
+int num_len(int num)
+{
+	unsigned int num1;
+	int len = 1;
+
+	if (num < 0)
+	{
+		len++;
+		num1 = num * -1;
+	}
+	else
+	{
+		num1 = num;
+	}
+	while (num1 > 9)
+	{
+		len++;
+		num1 /= 10;
+	}
+
+	return (len);
 }

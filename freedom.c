@@ -3,7 +3,6 @@
 void free_tokens(char **tokens);
 void free_path(char **paths);
 void free_env(void);
-void free_alias_list(alias_t *head);
 void sig_stop(int sNum);
 
 /**
@@ -75,6 +74,9 @@ void free_exit(char *line)
  */
 void sig_stop(int sNum)
 {
+	char *sigMsg = "\nWhat is dead may never die...";
+
 	(void)sNum;
+	write(STDOUT_FILENO, sigMsg, _strlen(sigMsg));
 	write(STDOUT_FILENO, "\n$ ", 3);
 }
