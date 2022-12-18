@@ -1,6 +1,13 @@
 Synopsis
 This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle piping, redirection, or aliases.
 
+<h2>How Does it Work?</h2>
+<p>
+
+![](https://github.com/ZeroDayPoke2/holbertonschool-printf/blob/main/PLD_printf.png)
+
+</p>
+
 Builtins
 exit exits shell (Usage: exit [status])
 env prints environmental variables (Usage: env)
