@@ -70,6 +70,32 @@ This repository holds all the code necessary for our custom simple shell to run.
 | char **tokstr(char *line, char *delims)      | tokenizes str into arr of substrs        |
 
 </p>
+
+<h2>Examples</h2>
+Intended to be compiled with the following command:
+
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
+
+Once compiled, this shell program can be run in interactive mode by running:
+
+```
+./hsh
+```
+
+Or non-interactive mode, with commands such as:
+
+```
+echo -e "ls -a\npwd\n" | ./hsh
+```
+
+Alternative, if a known desired command sequence exists, it can be indirectly run from file with:
+
+```
+cat {{file_name_here}} | ./hsh
+```
+
 Builtins
 exit exits shell (Usage: exit [status])
 env prints environmental variables (Usage: env)
