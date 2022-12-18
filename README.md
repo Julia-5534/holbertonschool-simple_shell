@@ -1,5 +1,7 @@
-Synopsis
-This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle piping, redirection, or aliases.
+<h2>Synopsis</h2>
+<p>
+This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle aliases, directory changes, or many other feature presently.
+</p>
 
 <h2>How Does it Work?</h2>
 <p>
@@ -96,6 +98,16 @@ Alternative, if a known desired command sequence exists, it can be indirectly ru
 cat {{file_name_here}} | ./hsh
 ```
 
+The program will continue awaiting and executing user inputs (provided they're valid) until
+one of the following conditions is satisfied or otherwise occurs, breaking the infinite loop:
+
+<ul>
+<li>1. It receives a SIGTERM (Ctrl + D) EOF signal, causing a controlled shutdown</li>
+<li>2. It receives a SIGKILL signal, whereafter undefined behavior may transpire</li>
+<li>3. The built in exit command is triggered, also causing a controlled exit</li>
+<li>4. A fatal program error occurs, and is most likely printed to stderr</li>
+</ul>
+
 Builtins
 exit exits shell (Usage: exit [status])
 env prints environmental variables (Usage: env)
@@ -103,21 +115,6 @@ setenv creates or modifies an environmental variable (Usage: setenv name value)
 unsetenv removes an envrionmental variable (Usage: unsetenv name value)
 cd changes directories (Usage: cd [path])
 
-Description of what each file shows:
-man_1_simple_shell ------------------------ custom manpage for our simple shell
-main.c ----------------------------- holds entrance into program
-shell.h ---------------------------- holds prototypes of functions spread across all files
-
-built_in.c --------------------------- runBuiltIn, hey_exit, hey_env
-error_cases_2.c ------------------ error_cd, error_syn, error_126, error_127
-error_cases.c ------------------------- create_error, error_env, error_1, error_exit
-error_elephant.c -------------------------- errorHand
-freedom.c -------------------------- free_tokens, free_path, free_env, free_alias_list
-help_fun.c -------------------------- get_input, yoinkline, num_len, _itoa, forktime
-moar_strstuff.c -------------------------- _strncmp, _strspn
-pathfinder.c -------------------------- path_locate, path_tok, print_paths, check_paths
-string_support.c ------------------------- _strcat, dupstr, _strcpy, _strcmp, _strlen
-tokenizer.c ------------------------- tok_num, tokstr, substrLen
 Environment
 Language: C
 OS: Ubuntu 14.04 LTS
