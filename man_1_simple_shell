@@ -1,18 +1,22 @@
-.TH SIMPLE_SHELL "11" "December 2022" "simple_shell Manual"
+.TH "simple_shell" "1" "December 2022" "simple_shell Manual"
 
 .SH NAME
 .B simple_shell \- A Simple Shell Holberton Project
 
 .SH SYNOPSIS
 .B ./hsh
-This shell is a mini-mimic of /bin/sh in terms of functionality. It works in both interactive and non-interactive mode.
+This shell is a mini-mimic of /bin/sh in terms of functionality.
+It works in both interactive and non-interactive mode.
 .PP
 
 .SH OVERVIEW
 simple_shell accepts, interprets, and executes commands from files and the command line.
 
 .SH Description
-This shell functions as a very simplified UNIX command line interpreter. This shell displays a prompt ($ ) and waits for the user to type a command. Commands always end with a new line. The prompt will be displayed again each time a command has been executed. The command lines will be simple, with no advanced features. If an executable cannot be found, an error message will print and a prompt will display.
+This shell functions as a very simplified UNIX command line interpreter. This shell displays a prompt
+and waits for the user to type a command. Commands always end with a new line. The prompt will be displayed
+again each time a command has been executed. The command lines will be simple, with no advanced features. If an
+executable cannot be found, an error message will print and a prompt will display.
 This shell will handle errors, the "end of file" condition Ctrl+D, as well as,
 
 .SH INVOCATION
@@ -74,7 +78,12 @@ The following exit values shall be returned:
        command it invoked or attempted to invoke.
 
 .SH BUGS
-None, though there is much less functionality than a standard shell.
+.PP
+Entering commands in rapid succession can sometimes skew the command prompt
+display position in interactive mode.
+.PP
+Users should not remove their environmental PATH variable then
+proceed to replace it with PATH1.
 .SH AUTHORS
 Julia Bullard <5534@holbertonschool.com>
 Chris Stamper <5580@holbertonschool.com>
