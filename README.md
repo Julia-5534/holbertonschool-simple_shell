@@ -98,9 +98,31 @@ Alternative, if a known desired command sequence exists, it can be indirectly ru
 cat {{file_name_here}} | ./hsh
 ```
 
+Attempting bad magic, or otherwise making an inoperable command, should cause an error message
+to be printed to the user's standard error, typically in one of the following forms:
+
+Following a command that both doesn't exist as part of the PATH and doesn't point to an existing file.
+Take for example, supplying /not/a/path/to/a/executable at line 1 (first entered command in session),
+when the program is named hsh during compilation would be expected to produce the following error
+
+```
+./hsh: 1: /not/a/path/to/a/executable: not found
+```
+
+to be printed to the user's standard error, however; should a file exist in such a location and
+the user simply not have permission to execute (run) it, the following would be anticipated to display
+
+```
+./hsh: 1: /not/a/path/to/a/executable: Permission denied
+```
+
+In either case the program's global exit value will be changed to the associated error number.
+Upon program termination, the exit status of the last executed command should be available to the user.
+
 The program will continue awaiting and executing user inputs (provided they're valid) until
 one of the following conditions is satisfied or otherwise occurs, breaking the infinite loop:
 
+<h2>Exit Conditions</h2>
 <ul>
 <li>1. It receives a SIGTERM (Ctrl + D) EOF signal, causing a controlled shutdown</li>
 <li>2. It receives a SIGKILL signal, whereafter undefined behavior may transpire</li>
