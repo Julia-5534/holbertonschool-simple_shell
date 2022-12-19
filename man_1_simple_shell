@@ -12,12 +12,13 @@ It works in both interactive and non-interactive mode.
 .SH OVERVIEW
 simple_shell accepts, interprets, and executes commands from files and the command line.
 
-.SH Description
+.SH DESCRIPTION
 This shell functions as a very simplified UNIX command line interpreter. This shell displays a prompt
 and waits for the user to type a command. Commands always end with a new line. The prompt will be displayed
 again each time a command has been executed. The command lines will be simple, with no advanced features. If an
 executable cannot be found, an error message will print and a prompt will display.
-This shell will handle errors, the "end of file" condition Ctrl+D, as well as,
+This shell will handle errors, the "end of file" condition Ctrl+D, and also contains built ins for the env and exit
+functions.
 
 .SH INVOCATION
 .I interactive
@@ -25,7 +26,7 @@ simple shell can be invoked by typing ./hsh. Meanwhile, a
 .I non-interactive
 simple shell can also be invoked via a pipe (e.g. echo "/bin/ls" | ./hsh).
 
-.SS Sample Functions
+.SS SAMPLE FUNCTIONS
 .sp
 echo
 .I [arguments]
@@ -39,20 +40,12 @@ pwd
       prints working directories
 .SH BUILTINS
 .sp
-cd
-      changes directory and updates environmental variables OLDPWD and PWD
-.sp
 env
       prints environmental variables
 .sp
 exit
       exits out of simple shell and returns to user's original shell
-.sp
-setenv
-      creates non-existing or modifies existing environmental variable within shell session
-.sp
-unsetenv
-      removes existing environmental variable within shell session
+
 
 .PP
 .SH EXIT STATUS

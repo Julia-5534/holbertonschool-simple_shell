@@ -1,6 +1,6 @@
 <h2>Synopsis</h2>
 <p>
-This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle aliases, directory changes, or many other feature presently.
+This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle aliases, directory changes, or many other features presently.
 </p>
 
 <h2>How Does it Work?</h2>
@@ -130,43 +130,40 @@ one of the following conditions is satisfied or otherwise occurs, breaking the i
 <li>4. A fatal program error occurs, and is most likely printed to stderr</li>
 </ul>
 
-Builtins
-exit exits shell (Usage: exit [status])
-env prints environmental variables (Usage: env)
-setenv creates or modifies an environmental variable (Usage: setenv name value)
-unsetenv removes an envrionmental variable (Usage: unsetenv name value)
-cd changes directories (Usage: cd [path])
+Builtins  
+exit exits shell (Usage: exit [status])  
+env prints environmental variables (Usage: env)  
+  
+Environment  
+Language: C  
+OS: Ubuntu 14.04 LTS  
+Compiler: gcc 4.8.4  
+Style guidelines: Betty style  
+How To Install, Compile, and Use  
+Install and Compile  
 
-Environment
-Language: C
-OS: Ubuntu 14.04 LTS
-Compiler: gcc 4.8.4
-Style guidelines: Betty style
-How To Install, Compile, and Use
-Install and Compile
+(your_terminal)$ git clone https://github.com/Julia-5534/holbertonschool-simple_shell.git  
+(your_terminal)$ cd holbertonschool-simple_shell  
+(your_terminal)$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh  
+Non-Interactive Mode  
+  
+echo "ls -l" | ./hsh  
+  
+Interactive Mode* Activate the shell  
+  
+(your_terminal)$ ./hsh  
+$  
+Sample Usage  
+  
+$ ls  
+$ echo "This is a pretty cool!"  
+This is pretty cool!  
+$ man ./man_1_simple_shell (opens our manpage for more information)  
+Stop and return to your original shell  
 
-(your_terminal)$ git clone https://github.com/Julia-5534/holbertonschool-simple_shell.git
-(your_terminal)$ cd holbertonschool-simple_shell
-(your_terminal)$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-Non-Interactive Mode
-
-echo "ls -l" | ./hsh
-
-Interactive Mode* Activate the shell
-
-(your_terminal)$ ./hsh
-$
-Sample Usage
-
-$ ls
-$ echo "This is a pretty cool!"
-This is pretty cool!
-$ man ./man_1_simple_shell (opens our manpage for more information)
-Stop and return to your original shell
-
-$ exit
-(your_terminal)$
-To Do
-More functionality can still be added (e.g. handle aliases, pipelines, and redirections)
-Authors
-Julia Bullard & Chris Stamper
+$ exit  
+(your_terminal)$  
+To Do  
+More functionality can still be added (e.g. handle aliases, pipelines, and redirections)  
+Authors  
+Julia Bullard & Chris Stamper  
