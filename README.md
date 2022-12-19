@@ -74,25 +74,21 @@ This repository holds all the code necessary for our custom simple shell to run.
 
 <h3>EXAMPLES</h3>
 Intended to be compiled with the following command:
-
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
 Once compiled, this shell program can be run in interactive mode by running:
-
 ```
 ./hsh
 ```
 
 Or non-interactive mode, with commands such as:
-
 ```
 echo -e "ls -a\npwd\n" | ./hsh
 ```
 
 Alternatively, if a known desired command sequence exists, it can be indirectly run from file with:
-
 ```
 cat {{file_name_here}} | ./hsh
 ```
@@ -102,15 +98,12 @@ to be printed to the user's standard error, typically in one of the following fo
 
 Following a command that both doesn't exist as part of the PATH and doesn't point to an existing file.
 Take for example, supplying /not/a/path/to/a/executable at line 1 (first entered command in session),
-when the program is named hsh during compilation would be expected to produce the following error
-
+when the program is named hsh during compilation, it would be expected to produce the following error to the user's standard error:
 ```
 ./hsh: 1: /not/a/path/to/a/executable: not found
 ```
 
-to be printed to the user's standard error, however; should a file exist in such a location and
-the user simply not have permission to execute (run) it, the following would be anticipated to display
-
+However, should a file exist in such a location and the user simply not have permission to execute (run) it, the following would be anticipated to display:
 ```
 ./hsh: 1: /not/a/path/to/a/executable: Permission denied
 ```
