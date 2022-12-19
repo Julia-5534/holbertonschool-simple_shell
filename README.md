@@ -12,10 +12,11 @@ This repository holds all the code necessary for our custom simple shell to run.
 ![](https://github.com/Julia-5534/holbertonschool-simple_shell/blob/master/shellPFD.jpg)
 
 </p>  
-:file_folder:<h3>FILE & FUNCTION DESCRIPTIONS</h3>:open_file_folder:
+
+:file_folder: <h3>FILE & FUNCTION DESCRIPTIONS</h3> :open_file_folder:
 <p>
 
-| <u>**Files**</u>   | <u>**Descriptions**</u>                                                                     |
+| **Files**          | **Descriptions**                                                                     |
 | ------------       | ------------------------------------------------------------------------------------ |
 | built_in.c         | handles and contains built in shell functions                                        |
 | error_elephant.c   | file containing error processing and writing directives                              |
@@ -28,7 +29,7 @@ This repository holds all the code necessary for our custom simple shell to run.
 | string_support.c   | this file consists of string manipulation functions called in various support roles  |
 | tokenizer.c        | contains tokstr as well as its associated support subfunctions                       |
 
-| <u>**Functions**</u>                             | <u>**Descriptions**</u>                  |
+| **Functions**                                    | **Descriptions**                         |
 | ------------------------------------------------ | ---------------------------------------- |
 | **built_in.c**                                   |                                          |
 | int runBuiltIn(char **command, char *line)       |  check for then calls built in functions |
@@ -130,19 +131,23 @@ one of the following conditions is satisfied or otherwise occurs, breaking the i
 
 <h3>BUILT-INS</h3>  
 
-`exit` 
+`exit`  
 exits shell (Usage: `exit [status]`)  
   
 `env`  
 prints environmental variables (Usage: `env`)    
   
-<h3><u>ENVIRONMENT</u></h3>  
+<h3>ENVIRONMENT</h3>
+
 Language: C  
+
 OS: Ubuntu 14.04 LTS  
+
 Compiler: gcc 4.8.4  
+
 Style Guidelines: Betty style 
    
-<h3><u>INSTALLATION, COMPILATION, USAGE</u></h3>  
+<h3>INSTALLATION, COMPILATION, USAGE</h3>  
   
 **Install and Compile**    
   
@@ -181,10 +186,10 @@ $ exit
 (your_terminal)$  
 ```
   
-:memo:<h3>TO DO</h3>:memo:  
+:memo: <h3>TO DO</h3> :memo:  
     
 More functionality can still be added (e.g. handle aliases, pipelines, and redirections)  
   
-:woman_dancing:**Authors**:man_dancing: 
+:woman_dancing: **Authors** :man_dancing: 
 
 Julia Bullard & Chris Stamper - Cohort 19 
