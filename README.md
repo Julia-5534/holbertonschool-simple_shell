@@ -126,10 +126,14 @@ one of the following conditions is satisfied or otherwise occurs, breaking the i
 
 <h3>BUILT-INS</h3>  
 
-`exit`  
+```
+exit
+```  
 exits shell (Usage: `exit [status]`)  
   
-`env`  
+```
+env
+```  
 prints environmental variables (Usage: `env`)    
   
 <h3>ENVIRONMENT</h3>
@@ -154,7 +158,9 @@ Style Guidelines: Betty style
     
 **Non-Interactive Mode**  
   
-``echo "ls -l" | ./hsh``  
+```
+echo "ls -l" | ./hsh
+```  
   
 **Interactive Mode**  
   
