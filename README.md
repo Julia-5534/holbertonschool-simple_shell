@@ -73,7 +73,9 @@ This repository holds all the code necessary for our custom simple shell to run.
 </p>
 
 <h3>EXAMPLES</h3>
+
 Intended to be compiled with the following command:
+
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
