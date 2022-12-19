@@ -27,7 +27,7 @@ This repository holds all the code necessary for our custom simple shell to run.
 
 | built_in.c Functions                             | Descriptions                             |
 | ------------------------------------------------ | ---------------------------------------- |
-| int runBuiltIn(char **command, char *line)       |  check for then calls built in functions |
+| int runBuiltIn(char **command, char *line)------ |  check for then calls built in functions |
 | int hey_exit(char **command)                     |  executes built in shell exit            |
 | int hey_env(char **command)                      |  prints user's current env to SO         |
 
