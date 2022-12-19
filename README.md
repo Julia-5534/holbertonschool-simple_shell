@@ -12,9 +12,8 @@ This repository holds all the code necessary for our custom simple shell to run.
 ![](https://github.com/Julia-5534/holbertonschool-simple_shell/blob/master/shellPFD.jpg)
 
 </p>  
-<p>
-:file_folder:<h3>FILE & FUNCTION DESCRIPTIONS</h3>:open_file_folder:
-</p>
+
+<h3>FILE & FUNCTION DESCRIPTIONS</h3>
 <p>
 
 | **Files**          | **Descriptions**                                                                     |
@@ -187,7 +186,7 @@ $ exit
 (your_terminal)$  
 ```
   
-:memo: <h3>TO DO</h3> :memo:  
+<h3>TO DO</h3>  
     
 More functionality can still be added (e.g. handle aliases, pipelines, and redirections)  
   
