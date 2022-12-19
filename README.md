@@ -1,18 +1,18 @@
-<h1><u>SIMPLE SHELL</u></h1>  
+<h1>SIMPLE SHELL</h1>  
 <h6>A Holberton School Project<h3>  
   
-<h3><u>SYNOPSIS</u></h3>
+<h3>SYNOPSIS</h3>
 <p>
 This repository holds all the code necessary for our custom simple shell to run. Our shell currently handles the executables found in the environmental variable PATH, with or without their full paths. Our shell does NOT handle aliases, directory changes, or many other features presently.
 </p>
 
-<h3><u>HOW DOES IT WORK?</u></h3>
+<h3>HOW DOES IT WORK?</h3>
 <p>
 
 ![](https://github.com/Julia-5534/holbertonschool-simple_shell/blob/master/shellPFD.jpg)
 
-</p>
-:file_folder:<h3><u>FILE & FUNCTION DESCRIPTIONS</u></h3>:open_file_folder:
+</p>  
+:file_folder:<h3>FILE & FUNCTION DESCRIPTIONS</h3>:open_file_folder:
 <p>
 
 | <u>**Files**</u>   | <u>**Descriptions**</u>                                                                     |
@@ -34,42 +34,44 @@ This repository holds all the code necessary for our custom simple shell to run.
 | int runBuiltIn(char **command, char *line)       |  check for then calls built in functions |
 | int hey_exit(char **command)                     |  executes built in shell exit            |
 | int hey_env(char **command)                      |  prints user's current env to SO         |
+|                                                  |                                          |
 | **error_elephant.c**                             |                                          |
 | void errorHand(int lNum, char *arg, char *pName) | writes error msgs to stderr              |
+|                                                  |                                          |
 | **freedom.c**                                    |                                          |
 | void free_tokens(char **tokens)                  | frees command array and its components   |
 | void free_path(char **paths)                     | frees path array and its components      |
 | void free_env(void)                              | frees environment (used for testing)     |
 | void free_exit(char *line)                       | prepares for program exit                |
 | void sig_stop(int sNum)                          | traps SIGINT and taunts user             |
+|                                                  |                                          |
 | **help_fun.c**                                   |                                          |
-| --------------------------------------------     | ---------------------------------------- |
 | char **get_input(char *input)                    | supplies tokstr with delims for command  |
 | char *_itoa(int num)                             | converts int to str for err msgs         |
 | int forktime(char **command, char *thePath)      | forks process and executes commands      |
 | int cleanstr(char *line)                         | removes new lines from line str          |
 | int num_len(int num)                             | counts digits in num for err msgs        |
+|                                                  |                                          |
 | **pathfinder.c**                                 |                                          |
-| --------------------------------------------     | ---------------------------------------- |
 | char **path_locate(char *envvar)                 | find PATH env var and supplies to tokstr |
 | char **path_tok(char *path)                      | supplies delims for path tokenization    |
 | char *check_paths(char *command)                 | checks and cats command and pathArr      |
+|                                                  |                                          |
 | **string_support.c**                             |                                          |
-| --------------------------------------------     | ---------------------------------------- |
 | char *_strcat(char *dest, char *src)             | concats src str onto dest str            |
 | char *_strcpy(char *dest, char *src)             | copies src str into dest str             |
 | int _strlen(char *s)                             | calc length of str                       |
 | int _strncmp(char *s1, char *s2, int n)          | compares first n bytes of two strs       |
 | int _strcmp(char *s1, char *s2)                  | finds first dif char in two strs         |
+|                                                  |                                          |
 | **tokenizer.c**                                  |                                          |
-| --------------------------------------------     | ---------------------------------------- |
 | int tok_num(char *str, char *delims)             | computes num of toks in str w/ delims    |
 | int substrLen(char *str, char *delims)           | calculates length of substring           |
 | char **tokstr(char *line, char *delims)          | tokenizes str into arr of substrs        |
 
 </p>
 
-<h3><u>EXAMPLES</u></h3>
+<h3>EXAMPLES</h3>
 Intended to be compiled with the following command:
 
 ```
@@ -118,7 +120,7 @@ Upon program termination, the exit status of the last executed command should be
 The program will continue awaiting and executing user inputs (provided they're valid) until
 one of the following conditions is satisfied or otherwise occurs, breaking the infinite loop:
 
-<h3><u>EXIT CONDITIONS</u></h3>
+<h3>EXIT CONDITIONS</h3>
 <ul>
 <li>1. It receives a `SIGTERM` (Ctrl + D) EOF signal, causing a controlled shutdown</li>
 <li>2. It receives a `SIGKILL` signal, whereafter undefined behavior may transpire</li>
@@ -126,8 +128,9 @@ one of the following conditions is satisfied or otherwise occurs, breaking the i
 <li>4. A fatal program error occurs, and is most likely printed to `stderr`</li>
 </ul>
 
-<h3><u>BUILT-INS</u></h3>  
-`exit`  
+<h3>BUILT-INS</h3>  
+
+`exit` 
 exits shell (Usage: `exit [status]`)  
   
 `env`  
@@ -143,34 +146,45 @@ Style Guidelines: Betty style
   
 **Install and Compile**    
   
-``(your_terminal)$ git clone https://github.com/Julia-5534/holbertonschool-simple_shell.git``  
-``(your_terminal)$ cd holbertonschool-simple_shell``  
-``(your_terminal)$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh``  
-  
+```
+(your_terminal)$ git clone https://github.com/Julia-5534/holbertonschool-simple_shell.git  
+(your_terminal)$ cd holbertonschool-simple_shell  
+(your_terminal)$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh  
+```  
+    
 **Non-Interactive Mode**  
   
 ``echo "ls -l" | ./hsh``  
   
 **Interactive Mode**  
   
-``(your_terminal)$ ./hsh``  
-``$``  
- 
+```
+(your_terminal)$ ./hsh    
+$  
+```  
+   
 **Sample Usage**  
   
-``$ ls``  
-``$ echo "This is a pretty cool!"``  
-``This is pretty cool!``
+```
+$ ls  
+$ echo "This is a pretty cool!"  
+This is pretty cool!
+```  
   
-``$ man ./man_1_simple_shell`` (opens our manpage for more information)  
-``Stop and return to your original shell``  
+```  
+$ man ./man_1_simple_shell //(opens our manpage for more information)//  
+Stop and return to your original shell  
+```  
   
-``$ exit``  
-``(your_terminal)$``  
+```
+$ exit  
+(your_terminal)$  
+```
   
-<h3><u>TO DO</u></h3> :memo::pencil: 
+:memo:<h3>TO DO</h3>:memo:  
     
 More functionality can still be added (e.g. handle aliases, pipelines, and redirections)  
   
-:woman_dancing:<u>**Authors**</u>:man_dancing: 
+:woman_dancing:**Authors**:man_dancing: 
+
 Julia Bullard & Chris Stamper - Cohort 19 
