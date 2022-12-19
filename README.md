@@ -12,8 +12,9 @@ This repository holds all the code necessary for our custom simple shell to run.
 ![](https://github.com/Julia-5534/holbertonschool-simple_shell/blob/master/shellPFD.jpg)
 
 </p>  
-
-:file_folder: <h3>FILE & FUNCTION DESCRIPTIONS</h3> :open_file_folder:
+<p>
+:file_folder:<h3>FILE & FUNCTION DESCRIPTIONS</h3>:open_file_folder:
+</p>
 <p>
 
 | **Files**          | **Descriptions**                                                                     |
@@ -123,10 +124,10 @@ one of the following conditions is satisfied or otherwise occurs, breaking the i
 
 <h3>EXIT CONDITIONS</h3>
 <ul>
-<li>1. It receives a `SIGTERM` (Ctrl + D) EOF signal, causing a controlled shutdown</li>
-<li>2. It receives a `SIGKILL` signal, whereafter undefined behavior may transpire</li>
-<li>3. The built-in `exit` command is triggered, also causing a controlled exit</li>
-<li>4. A fatal program error occurs, and is most likely printed to `stderr`</li>
+<li>1. It receives a SIGTERM (Ctrl + D) EOF signal, causing a controlled shutdown</li>
+<li>2. It receives a SIGKILL signal, whereafter undefined behavior may transpire</li>
+<li>3. The built-in exit command is triggered, also causing a controlled exit</li>
+<li>4. A fatal program error occurs, and is most likely printed to stderr</li>
 </ul>
 
 <h3>BUILT-INS</h3>  
